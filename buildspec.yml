@@ -1,7 +1,7 @@
 version: 0.2
 env:
   parameter-store:
-    REACT_APP_CALENDAR_ID: "/chadedwards/public_calender_id"
+    REACT_APP_CALENDAR_ID: "/chadedwards/public_calendar_id"
     REACT_APP_GOOGLE_API_KEY: "/chadedwards/google_api_key"
 phases:
   install:
@@ -10,6 +10,8 @@ phases:
   pre_build:
     commands:
       - yarn
+      - echo "REACT_APP_CALENDAR_ID=$REACT_APP_CALENDAR_ID" >> .env
+      - echo "REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY" >> .env
   build:
     commands:
       - yarn build
