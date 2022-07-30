@@ -6,35 +6,24 @@ import '../css/tour.css';
 const calendarID = process.env.REACT_APP_CALENDAR_ID;
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
-const initiate = (setter) => {
-    if (!setter || !gapi.client) return;
-    gapi.client.init({
-          apiKey: apiKey,
-        })
-        .then(() => {
-          return gapi.client.request({
-            path: `https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events`,
-          });
-        })
-        .then(
-            (response) => {
-              let events = response.result.items;
-              setter(events)
-              return events;
-            },
-            (err) => {
-              return [false, err];
-            }
-        );
-  };
-
 const Tour = () => {
     const [dates, setDates] = React.useState([]);
-    gapi.load("client", initiate)
-
+    
+    const start = () => {
+        gapi.client.init({
+            apiKey: apiKey
+        }).then(() => {
+            return gapi.client.request({
+                path: `https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events`,
+            })
+        }).then(resp => {
+            setDates(resp.result.items);
+        })
+    };
+    
     React.useEffect(() => {
-        initiate(setDates);
-    },[gapi.client]);
+        gapi.load("client", start);
+    }, []);
     
     const renderTable = () => {
         return <table className={'calendar'}>
