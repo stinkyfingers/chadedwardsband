@@ -25,3 +25,4 @@ terraform/.terraform/*
 terraform/terraform.tfstate*
 
 .idea*
+.env

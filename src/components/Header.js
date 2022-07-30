@@ -10,7 +10,7 @@ const Header = () => {
         <Link className={'link'} to="/">Home</Link>
         <Link className={'link'} to="/tour">Tour</Link>
         <Link className={'link'} to="/about">About</Link>
-        <Link className={'link'} to="/media">Media</Link>
+        <Link className={'link'} to="/media">Photos</Link>
       </nav>
     </div>
   );

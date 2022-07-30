@@ -1,4 +1,8 @@
 version: 0.2
+env:
+  parameter-store:
+    REACT_APP_CALENDAR_ID: "/chadedwards/public_calender_id"
+    REACT_APP_GOOGLE_API_KEY: "/chadedwards/google_api_key"
 phases:
   install:
     runtime-versions:

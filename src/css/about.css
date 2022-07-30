@@ -1,0 +1,17 @@
+.fb {
+    max-width: 8%;
+}
+
+.summary {
+    width: 30%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .fb {
+        max-width: 20%;
+    }
+    .summary {
+        width: 90%;
+    }
+}

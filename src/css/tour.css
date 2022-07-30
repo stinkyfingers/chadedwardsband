@@ -1,0 +1,18 @@
+div.calendar {
+    display: block;
+}
+
+table.calendar {
+    margin: auto;
+}
+
+td,th {
+    padding: 1em;
+    border: 1px solid var(--white);
+}
+
+@media only screen and (max-width: 600px) {
+    div.calendar {
+        width: 100%;
+    }
+}

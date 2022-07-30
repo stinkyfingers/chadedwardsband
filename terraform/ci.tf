@@ -63,6 +63,13 @@ resource "aws_iam_role_policy" "build" {
       "Resource": [
         "${aws_cloudfront_distribution.distribution.arn}"
       ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameters"
+      ],
+      "Resource": "*"
     }
   ]
 }
