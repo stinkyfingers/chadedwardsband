@@ -7,7 +7,15 @@ provider "aws" {
 # s3
 resource "aws_s3_bucket" "bucket" {
   bucket = "${var.project}.${var.domain}"
+}
+
+resource "aws_s3_bucket_acl" "acl" {
+  bucket = aws_s3_bucket.bucket.id 
   acl = "private"
+}
+
+resource "aws_s3_bucket_policy" "policy" {
+  bucket = aws_s3_bucket.bucket.id
   policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -65,6 +73,11 @@ resource "aws_cloudfront_distribution" "distribution" {
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
+  custom_error_response {
+    error_code = 403
+    response_code = 200
+    response_page_path = "/index.html"
+  }
 
   aliases = ["${var.project}.${var.domain}"]
 
