@@ -53,6 +53,22 @@ resource "aws_s3_bucket_public_access_block" "pab" {
   block_public_policy = true
 }
 
+#resource "aws_s3_bucket_cors_configuration" "cors" {
+#  bucket = aws_s3_bucket.bucket.id
+#  cors_rule {
+#    allowed_headers = ["Authorization"]
+#    allowed_methods = ["GET", "HEAD"]
+#    allowed_origins = ["localhost","john-shenk.com","chadedwardsband.com"]
+#    expose_headers  = ["Access-Control-Allow-Origin"]
+#    max_age_seconds = 3000
+#  }
+#
+#  cors_rule {
+#    allowed_methods = ["GET"]
+#    allowed_origins = ["*"]
+#  }
+#}
+
 resource "aws_cloudfront_origin_access_identity" "oai" {
   comment = "${var.project}.${var.domain} identity"
 }

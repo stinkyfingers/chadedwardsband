@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../css/header.css';
 
-const Header = () => {
+const Header = ({ err }) => {
   return (
     <div className="Header">
       <nav>
@@ -12,6 +12,7 @@ const Header = () => {
         <Link className={'link'} to="/about">About</Link>
         <Link className={'link'} to="/media">Photos</Link>
       </nav>
+        { err ? <div className={'error'}>{err}</div> : null }
     </div>
   );
 }

@@ -10,20 +10,22 @@ import Home from './components/Home';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-        <BrowserRouter>
-        <Header />
-            <Routes>
-                <Route path='/about' element={<About />} />
-                <Route path='/tour' element={<Tour />} />
-                <Route path='/media' element={<Media />} />
-                <Route path='/' element={<Home />} />
-            </Routes>
-        </BrowserRouter>
-
-    </div>
-  );
+    const [err, setErr] = React.useState();
+    
+    return (
+        <div className="App">
+            <BrowserRouter>
+            <Header err={err} />
+                <Routes>
+                    <Route path='/about' element={<About />} />
+                    <Route path='/tour' element={<Tour />} />
+                    <Route path='/media' element={<Media setErr={ setErr } />} />
+                    <Route path='/' element={<Home />} />
+                </Routes>
+            </BrowserRouter>
+        
+        </div>
+    );
 }
 
 export default App;
