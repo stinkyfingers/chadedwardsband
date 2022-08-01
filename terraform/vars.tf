@@ -15,15 +15,15 @@ variable "project" {
 
 variable "domain" {
   type = string
-  default = "john-shenk.com"
+  default = "chadedwardsband.com"
 }
 
 variable "zone_id" {
   type = string
-  default = "Z3P68RXJ4VECYX"
+  default = "Z07230841WGGQO6S2Y4IA"
 }
 
 variable "certificate_arn" {
-  type = string
-  default = "arn:aws:acm:us-east-1:671958020402:certificate/fc7ab094-b641-4898-8aca-24739e555f73"
+  type = string 
+  default = "arn:aws:acm:us-east-1:671958020402:certificate/d3d8cc33-8a32-49c4-8e5b-d35e1754d9bd"
 }

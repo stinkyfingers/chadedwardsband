@@ -22,7 +22,7 @@ phases:
       - yarn build
   post_build:
     commands:
-      - aws s3 sync build s3://chadedwardsband.john-shenk.com
+      - aws s3 sync build s3://chadedwardsband.com
       - aws cloudfront create-invalidation --paths /index.html --distribution-id E2Z5GH3I4QJ67B
 artifacts:
   files:
