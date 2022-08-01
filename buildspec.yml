@@ -3,6 +3,8 @@ env:
   parameter-store:
     REACT_APP_CALENDAR_ID: "/chadedwards/public_calendar_id"
     REACT_APP_GOOGLE_API_KEY: "/chadedwards/google_api_key"
+    REACT_APP_AWS_SECRET_ACCESS_KEY: "/chadedwards/aws_secret_access_key"
+    REACT_APP_AWS_ACCESS_KEY_ID: "/chadedwards/aws_access_key_id"
 phases:
   install:
     runtime-versions:
@@ -12,6 +14,8 @@ phases:
       - yarn
       - echo "REACT_APP_CALENDAR_ID=$REACT_APP_CALENDAR_ID" >> .env
       - echo "REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY" >> .env
+      - echo "REACT_APP_AWS_SECRET_ACCESS_KEY=$REACT_APP_AWS_SECRET_ACCESS_KEY" >> .env
+      - echo "REACT_APP_AWS_ACCESS_KEY_ID=REACT_APP_AWS_ACCESS_KEY_ID" >> .env
   build:
     commands:
       - cat .env
