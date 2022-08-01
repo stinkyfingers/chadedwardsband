@@ -69,7 +69,7 @@ resource "aws_cloudfront_distribution" "distribution" {
     response_page_path = "/index.html"
   }
 
-  aliases = ["${var.project}.${var.domain}"]
+  aliases = ["${var.domain}"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -110,7 +110,7 @@ resource "aws_cloudfront_distribution" "distribution" {
 
 resource "aws_route53_record" "record" {
   zone_id = var.zone_id
-  name    = "${var.project}.${var.domain}"
+  name    = "${var.domain}"
   type    = "A"
 
   alias {
