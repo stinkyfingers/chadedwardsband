@@ -8,7 +8,15 @@ table.calendar {
 
 td,th {
     padding: 1em;
-    border: 1px solid var(--white);
+    /*border: 1px solid var(--white);*/
+}
+
+tr:nth-child(even) {
+    background-color: var(--off-black);
+}
+
+.eventRow:hover {
+    background-color: var(--grey);
 }
 
 @media only screen and (max-width: 600px) {

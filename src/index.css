@@ -8,6 +8,8 @@ body {
 
   --black: #050505;
   --white: #eee;
+  --off-black: #222222;
+  --grey: #666;
   
   background-color: var(--black);
   color: var(--white);
