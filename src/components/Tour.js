@@ -1,8 +1,8 @@
 import React from 'react';
-
+import Error from './Error';
 import '../css/tour.css';
 
-const Tour = ({ pastDates, upcomingDates }) => {
+const Tour = ({ pastDates, upcomingDates, err }) => {
     const renderTable = (dates) => {
         if (!dates.length) return null;
         dates = dates.sort((a, b) => {
@@ -33,6 +33,7 @@ const Tour = ({ pastDates, upcomingDates }) => {
     }
     
   return <div className={'Tour'}>
+      { err && <Error err={err} /> }
       <div className={'calendar'}>
           <h3 className={'upcomfingDates'}>Upcoming Dates</h3>
          {renderTable(upcomingDates)}
