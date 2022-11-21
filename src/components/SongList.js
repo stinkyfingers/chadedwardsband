@@ -1,8 +1,10 @@
 import React from 'react';
+import Error from './Error';
 import '../css/songlist.css';
 
 const SongList = ({
   songlist,
+  err,
 }) => {
   const rows = () => {
     if (!songlist.length) return null;
@@ -19,6 +21,7 @@ const SongList = ({
   if (!songlist) return null;
   return (
     <div className="songlist">
+      { err && <Error err={err} />}
       <table>
         <thead>
           <tr>

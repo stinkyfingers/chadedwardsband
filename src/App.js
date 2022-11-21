@@ -15,17 +15,16 @@ function App() {
   const [songlist, songErr] = useSongList();
   const [pastDates, upcomingDates, calendarErr] = useCalendar();
   const [err, setErr] = React.useState();
-  if (songErr) setErr(songErr)
-  if (calendarErr) setErr(calendarErr)
+
   return (
       <div className="App">
           <BrowserRouter>
           <Header err={err} />
               <Routes>
                   <Route path='/about' element={<About />} />
-                  <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} />} />
+                  <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
                   <Route path='/media' element={<Media setErr={ setErr } />} />
-                  <Route path='/songs' element={<SongList songlist={songlist} />} />
+                  <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
                   <Route path='/' element={<Home />} />
               </Routes>
           </BrowserRouter>
