@@ -1,43 +1,8 @@
 import React from 'react';
-import { gapi } from 'gapi-script';
 
 import '../css/tour.css';
 
-const calendarID = process.env.REACT_APP_CALENDAR_ID;
-const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-
-const Tour = () => {
-    const [upcomingDates, setUpcomingDates] = React.useState([]);
-    const [pastDates, setPastDates] = React.useState([]);
-    
-    const start = () => {
-        gapi.client.init({
-            apiKey: apiKey
-        }).then(() => {
-            return gapi.client.request({
-                path: `https://www.googleapis.com/calendar/v3/calendars/${calendarID}/events`,
-            })
-        }).then(resp => {
-            setPastDates([]);
-            setUpcomingDates([]);
-            if (!resp.result?.items) return;
-            const now = new Date();
-            return resp.result.items.map(event => {
-                const date = event.start.dateTime ? Date.parse(event.start.dateTime) : Date.parse(event.start.date);
-                if (date > now) {
-                    setUpcomingDates(dates => [...dates, event]);
-                } else {
-                    setPastDates(dates => [...dates, event]);
-                }
-                return null;
-            })
-        })
-    };
-    
-    React.useEffect(() => {
-        gapi.load("client", start);
-    }, []);
-    
+const Tour = ({ pastDates, upcomingDates }) => {
     const renderTable = (dates) => {
         if (!dates.length) return null;
         dates = dates.sort((a, b) => {
