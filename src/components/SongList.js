@@ -10,6 +10,7 @@ const SongList = ({
       <tr key={song.Song}>
         <td>{song.Song}</td>
         <td>{song['Artist Version']}</td>
+        <td>{song['Genre/Decade']}</td>
         <td>{song['Year']}</td>
       </tr>
     ))
@@ -23,6 +24,7 @@ const SongList = ({
           <tr>
             <th>Title</th>
             <th>Artist</th>
+            <th>Genre/Decade</th>
             <th>Year</th>
           </tr>
         </thead>

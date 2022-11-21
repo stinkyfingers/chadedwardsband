@@ -2,7 +2,8 @@ import React from 'react';
 import { gapi } from 'gapi-script';
 
 const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
-const spreadSheetId = process.env.REACT_APP_GOOGLE_SHEET_ID
+const spreadSheetId = process.env.REACT_APP_GOOGLE_SPREADSHEET_ID
+const sheetId = process.env.REACT_APP_GOOGLE_SHEET_ID;
 
 // Array of API discovery doc URLs for APIs
 const DISCOVERY_DOCS = [
@@ -33,10 +34,10 @@ const useSongList = () => {
         gapi.client.sheets.spreadsheets.values
           .get({
             spreadsheetId: spreadSheetId,
-            range: 'Sheet1!A1:T'
+            range: `${sheetId}!A1:T`
           })
           .then((resp) => {
-            // if (!resp.result || !resp.result.values) return;
+            if (!resp.result || !resp.result.values) return;
             setData(resp.result.values)
           })
           .catch(setErr)
