@@ -14,6 +14,7 @@ phases:
       - yarn
       - echo "REACT_APP_CALENDAR_ID=$REACT_APP_CALENDAR_ID" >> .env
       - echo "REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY" >> .env
+      - echo "REACT_APP_GOOGLE_SHEET_ID=$REACT_APP_GOOGLE_SHEET_ID" >> .env
       - echo "REACT_APP_AWS_SECRET_ACCESS_KEY=$REACT_APP_AWS_SECRET_ACCESS_KEY" >> .env
       - echo "REACT_APP_AWS_ACCESS_KEY_ID=REACT_APP_AWS_ACCESS_KEY_ID" >> .env
   build:
