@@ -1,6 +1,18 @@
 .Header {
     margin: 0;
+    z-index: 100;
 }
+
+.logo {
+    font-family: 'Monoton';
+    padding: 0;
+    margin: 0;
+}
+
+.selected {
+    text-decoration: underline!important;
+    text-decoration-color: var(--highlight)!important;
+} 
 
 nav {
     display: flex;

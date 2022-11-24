@@ -1,12 +1,12 @@
 import React from 'react';
 
-import logo from '../images/ce_logo.jpg'
+import img from '../images/band/IMG_0822.jpg';
 
 import '../css/home.css';
 
 const Home = () => {
   return <div className='Home'>
-    <img className='logo' src={logo} alt='Chad Edwards Band' />
+    <img className='bandImage' src={img} alt='Chad Edwards Band' />
   </div>
 };
 
