@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import '../css/header.css';
 
 const Header = ({ err }) => {
+  const path = useLocation().pathname;
   return (
     <div className="Header">
+      <h1 className='logo'>Chad Edwards Band</h1>
       <nav>
-        <Link className={'link'} to="/">Home</Link>
-        <Link className={'link'} to="/tour">Tour</Link>
-        <Link className={'link'} to="/about">About</Link>
-        <Link className={'link'} to="/songs">Songs</Link>
-        <Link className={'link'} to="/media">Photos</Link>
+        <Link className={`link${path === '/' && ' selected'}`} to="/">Home</Link>
+        <Link className={`link${path === '/tour' && ' selected'}`} to="/tour">Tour</Link>
+        <Link className={`link${path === '/about' && ' selected'}`} to="/about">About</Link>
+        <Link className={`link${path === '/songs' && ' selected'}`} to="/songs">Songs</Link>
+        <Link className={`link${path === '/media' && ' selected'}`} to="/media">Photos</Link>
       </nav>
         { err ? <div className={'error'}>{JSON.stringify(err)}</div> : null }
     </div>

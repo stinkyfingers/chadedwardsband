@@ -1,19 +1,15 @@
 div.calendar {
-    display: block;
 }
 
 table.calendar {
     margin: auto;
+    border-collapse: collapse;
 }
 
 td,th {
     padding: 1em;
-    /*border: 1px solid var(--white);*/
 }
 
-tr:nth-child(even) {
-    background-color: var(--off-black);
-}
 
 .eventRow:hover {
     background-color: var(--grey);
