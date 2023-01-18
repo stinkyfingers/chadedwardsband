@@ -8,6 +8,7 @@ import Tour from './components/Tour';
 import Media from './components/Media';
 import SongList from './components/SongList';
 import Home from './components/Home';
+import Tech from './components/Tech';
 import './App.css';
 import useSongList from './hooks/songlist';
 import useCalendar from './hooks/calendar';
@@ -38,6 +39,7 @@ function App() {
               <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
               <Route path='/media' element={<Media setErr={ setErr } />} />
               <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
+              <Route path='/tech' element={<Tech />} />
               <Route path='/' element={<Home />} />
             </Routes>
             </div>
