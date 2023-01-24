@@ -5,7 +5,8 @@ import WebFont from 'webfontloader';
 import Header from './components/Header';
 import About from './components/About';
 import Tour from './components/Tour';
-import Media from './components/Media';
+import Photos from './components/Photos';
+import Video from './components/Video';
 import SongList from './components/SongList';
 import Home from './components/Home';
 import Tech from './components/Tech';
@@ -37,7 +38,8 @@ function App() {
             <Routes>
               <Route path='/about' element={<About />} />
               <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
-              <Route path='/media' element={<Media setErr={ setErr } />} />
+              <Route path='/photos' element={<Photos setErr={ setErr } />} />
+              <Route path='/video' element={<Video />} />
               <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
               <Route path='/tech' element={<Tech />} />
               <Route path='/' element={<Home />} />
