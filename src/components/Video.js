@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/video.css';
 
 const YouTubeEmbed = ({ id }) => (
   <div className="video-responsive">
@@ -17,7 +18,7 @@ const YouTubeEmbed = ({ id }) => (
 const Video = () => {
   return (
     <div className='video'>
-      <ul>
+      <ul className='video-list'>
         <li>
           <YouTubeEmbed id='1WlBkyeZvlE' />
         </li>
