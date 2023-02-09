@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import WebFont from 'webfontloader';
 
 import Header from './components/Header';
@@ -14,9 +14,37 @@ import './App.css';
 import useSongList from './hooks/songlist';
 import useCalendar from './hooks/calendar';
 
-function App() {
+export const Router = ({ setErr }) => {
   const [songlist, songErr] = useSongList();
   const [pastDates, upcomingDates, calendarErr] = useCalendar();
+  const location = useLocation();
+
+  React.useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Monoton', 'Azeret Mono']
+      }
+    });
+  }, []);
+  React.useEffect(() => {
+    const path = location.pathname.length > 1 ? ` - ${location.pathname.slice(1)}` : '';
+    document.title = `Chad Edwards Band${path}`;
+  }, [location])
+
+  return (
+    <Routes>
+      <Route path='/about' element={<About />} />
+      <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
+      <Route path='/photos' element={<Photos setErr={ setErr } />} />
+      <Route path='/video' element={<Video />} />
+      <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
+      <Route path='/tech' element={<Tech />} />
+      <Route path='/' element={<Home />} />
+    </Routes>
+  );
+}
+
+function App() {
   const [err, setErr] = React.useState();
   
   React.useEffect(() => {
@@ -35,16 +63,8 @@ function App() {
           </div>
           <div />
           <div className='body'>
-            <Routes>
-              <Route path='/about' element={<About />} />
-              <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
-              <Route path='/photos' element={<Photos setErr={ setErr } />} />
-              <Route path='/video' element={<Video />} />
-              <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
-              <Route path='/tech' element={<Tech />} />
-              <Route path='/' element={<Home />} />
-            </Routes>
-            </div>
+            <Router setErr={setErr} />
+          </div>
         </BrowserRouter>
       </div>
     );
