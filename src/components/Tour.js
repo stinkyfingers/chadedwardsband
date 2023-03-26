@@ -2,8 +2,23 @@ import React from 'react';
 import Error from './Error';
 import '../css/tour.css';
 
+// values that alter the calendar row style
+const oblique = ['canceled', 'cancelled', 'postponed'];
+const updated = ['updated', 'changed'];
+
 const Tour = ({ pastDates, upcomingDates, err }) => {
-    const renderTable = (dates) => {
+    // styleEventSummary returns different style strings if the summary contains keywords. 
+    const styleEventSummary = (summary, calendarType) => {
+        if (oblique.some((val) => (summary.toLowerCase().includes(val)))) {
+            return calendarType === 'past' ? 'hidden' : 'oblique';
+        }
+        if (updated.some((val) => (summary.toLowerCase().includes(val)))) {
+            return 'bold';
+        }
+        return '';
+    };
+    
+    const renderTable = (dates, calendarType) => {
         if (!dates.length) return null;
         dates = dates.sort((a, b) => {
             const aStart = a.start.dateTime ? Date.parse(a.start.dateTime) : Date.parse(a.start.date);
@@ -21,7 +36,7 @@ const Tour = ({ pastDates, upcomingDates, err }) => {
                     const date = event.start.dateTime ? new Date(event.start.dateTime).toLocaleDateString() : new Date(event.start.date).toLocaleDateString();
                     const time = event.start.dateTime ? new Date(event.start.dateTime).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}) : 'TBA';
                     const endTime = event.end.dateTime ? new Date(event.end.dateTime).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}) : null;
-                    return <tr key={event.id} className={'eventRow'}>
+                    return <tr key={event.id} className={`eventRow ${ styleEventSummary(event.summary, calendarType)}`}>
                         <td>{date}</td>
                         <td>{time} {endTime ? ` - ${endTime}` : ''}</td>
                         <td>{event.summary}</td>
@@ -36,11 +51,11 @@ const Tour = ({ pastDates, upcomingDates, err }) => {
       { err && <Error err={err} /> }
       <div className={'calendar'}>
           <h3 className={'upcomfingDates'}>Upcoming Dates</h3>
-         {renderTable(upcomingDates)}
+         {renderTable(upcomingDates, 'upcoming')}
       </div>
       <div className={'pastDates'}>
           <h3 className={'pastDates'}>Past Dates</h3>
-          {renderTable(pastDates)}
+          {renderTable(pastDates, 'past')}
       </div>
   </div>
 };
