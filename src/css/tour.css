@@ -15,6 +15,18 @@ td,th {
     background-color: var(--grey);
 }
 
+.oblique {
+    font-style: oblique;
+}
+
+.bold {
+    font-weight: 800;
+}
+
+.hidden {
+    display: none;
+}
+
 @media only screen and (max-width: 600px) {
     div.calendar {
         width: 100%;
