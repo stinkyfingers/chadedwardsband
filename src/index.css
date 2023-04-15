@@ -10,6 +10,12 @@ body {
   --grey: #ccc;
   --accent: #66f;
   --highlight: #e44;
+  --blue: #00f;
+  --light-grey: #eee;
+  --dark-grey: #444;
+  --red: #f44;
+  --yellow: #ff4;
+  --green: #0f0;
   --secondary-font: 'Dosis';
   --primary-font: 'PT Sans Narrow';
   

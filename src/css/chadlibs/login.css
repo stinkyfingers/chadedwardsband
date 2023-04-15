@@ -1,0 +1,12 @@
+div.Login, div.Logout {
+    display: inline;
+}
+
+button.login:hover {
+    cursor: pointer;
+}
+
+small.username {
+    font-size: .5em;
+    display: block;
+}

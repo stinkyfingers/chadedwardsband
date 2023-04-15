@@ -1,0 +1,29 @@
+div.chadLibsHeader {
+    padding: 1em 0;
+}
+
+div.menu {
+    background-color: var(--light-grey);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+button.menu {
+    color: var(--white);
+    height: 2em;
+}
+
+button.menu a {
+    text-decoration: none;
+    color: var(--white)
+}
+
+button.menu:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
+button:disabled {
+    opacity: .5;
+}
