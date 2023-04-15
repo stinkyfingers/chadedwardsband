@@ -10,6 +10,7 @@ import Video from './components/Video';
 import SongList from './components/SongList';
 import Home from './components/Home';
 import Tech from './components/Tech';
+import Chadlibs from './components/chadlibs/Chadlibs';
 import './App.css';
 import useSongList from './hooks/songlist';
 import useCalendar from './hooks/calendar';
@@ -17,6 +18,7 @@ import useCalendar from './hooks/calendar';
 export const Router = ({ setErr }) => {
   const [songlist, songErr] = useSongList();
   const [pastDates, upcomingDates, calendarErr] = useCalendar();
+
   const location = useLocation();
 
   React.useEffect(() => {
@@ -39,6 +41,7 @@ export const Router = ({ setErr }) => {
       <Route path='/video' element={<Video />} />
       <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
       <Route path='/tech' element={<Tech />} />
+      <Route path='/libs/*' element={<Chadlibs />} />
       <Route path='/' element={<Home />} />
     </Routes>
   );
