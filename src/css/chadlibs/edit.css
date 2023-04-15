@@ -1,0 +1,84 @@
+
+label {
+    padding: .2em;
+    font-size: 1.4em;
+    color: var(--grey);
+    display: block;
+}
+
+input, textarea, select {
+    padding: .2em .2em;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input, select {
+    font-size: 1.4em;
+    width: 50%;
+}
+
+textarea {
+    width: 90%;
+    min-height: 10em;
+}
+
+select {
+    max-width: 4em;
+}
+
+div.actions {
+    padding: 1em;
+    display: flex;
+    direction: row;
+    justify-content: space-around;
+}
+
+div.pos {
+    display: inline;
+}
+
+button.pos {
+    font-size: .8em;
+    margin: .4em;
+    font-size: 1.2em;
+}
+
+div.commonPos {
+    overflow: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    height: 10em
+}
+
+button.save {
+    color: var(--white);
+}
+
+button.delete {
+    color: var(--red);
+}
+
+input.custom {
+    width: 12em
+}
+
+label.custom {
+    font-size: .6em;
+}
+
+div.help {
+    width: 90%;
+    margin: auto;
+    font-size: 1.4em;
+}
+
+div.closeHelp {
+    padding: 2em;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    div.commonPos {
+        height: 10em
+    }
+}
