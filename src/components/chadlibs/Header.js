@@ -8,11 +8,18 @@ import '../../css/chadlibs/header.css';
 
 const Router = ({ user, setUser, setErr }) => {
   const path = window.location.pathname;
+  const admin = path === '/libs/admin';
   return (
     <>
-      <Link to='/libs'><button disabled={ path === '/'} className='menu'>List</button></Link>
-      <Link to='/libs/edit'><button disabled={!user || path === '/libs/edit'}className='menu'>Create</button></Link>
-      <LoginLogout user={user} setUser={setUser} setErr={setErr} />
+      { admin ?
+        <>
+          <Link to={'/libs/admin'}><button disabled={ path === '/'} className='menu'>List ChadLibs</button></Link>
+          <Link to='/libs/edit'><button disabled={!user || path === '/libs/edit'}className='menu'>Create {!user && '(login)'}</button></Link>
+          <LoginLogout user={user} setUser={setUser} setErr={setErr} />
+        </>
+        :
+        <Link to={'/libs'}><button disabled={ path === '/'} className='menu'>List ChadLibs</button></Link>
+      }
     </>
   );
 };

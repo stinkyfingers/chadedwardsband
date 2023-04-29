@@ -31,6 +31,7 @@ const Chadlibs = () => {
   }, [user])
 
   const routes = useRoutes([
+    { path: '/admin', element: <List /> },
     { path: '/play/:id', element: <Play /> },
     { path: '/edit/:id', element: <Edit /> },
     { path: '/edit', element: <Edit /> },
