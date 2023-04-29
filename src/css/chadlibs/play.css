@@ -9,7 +9,6 @@ label.term {
     color: var(--dark-grey);
 }
 
-
 button.reset {
     color: var(--black);
 }
@@ -21,11 +20,15 @@ button.submit {
 div.actions {
     padding: 1em;
     display: flex;
-    direction: row;
+    flex-direction: row;
     justify-content: space-around;
 }
 
 input.chadified {
     background-color: var(--light-grey);
     color: var(--grey);
+}
+
+div.complete {
+    white-space: pre-wrap;
 }

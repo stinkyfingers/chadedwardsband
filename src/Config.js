@@ -1,1 +1,7 @@
-export const clientId = '520868981613-vpe0s1lild8cl62hblmg9bfl01fplu06.apps.googleusercontent.com';
+export const clientId = '471569879015-povuetcdj12ofqae7vd2g062i7380qe1.apps.googleusercontent.com';
+
+export const authorizedUserEmails = [
+  'johnshenk77@gmail.com',
+  'chadedwardslive@gmail.com',
+  'jamesschneeberg@gmail.com',
+];
