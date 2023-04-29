@@ -102,7 +102,7 @@ const Play = () => {
         <label className='term'>{term.pos}</label>
         {
           term.chadified === true ?
-            <input type='text' readOnly defaultValue="--This response answered by Chad--" className="chadified" />
+            <input type='text' readOnly defaultValue="Chadified!" className="chadified" />
             :
             <input type='text' autoCapitalize={'none'} onChange={(e) => handleTermChange(e, i)} />
         }
