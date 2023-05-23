@@ -1,6 +1,5 @@
 import React from 'react';
 import { chatGptCompletion } from '../../Api';
-import Loader from 'react-loader';
 import '../../css/chadgpt/chadgpt.css';
 
 const systemRole = {
@@ -54,7 +53,7 @@ const ChadGPT = ({ setErr }) => {
 					)
 				})}
 			</div>
-			{ loading && <Loader loaded={true} /> }
+			{ loading && <div className='loading'>Thinking...</div> }
 			<textarea
 				className='prompt'
 				disabled={loading}
