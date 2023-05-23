@@ -6,6 +6,9 @@
 .directions, .loading {
     margin: auto;
 }
+.loading {
+    color: var(--blue);
+}
 .directions {
     max-width: 45em;
     font-style: oblique;
