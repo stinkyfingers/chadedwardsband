@@ -1,0 +1,27 @@
+.chadGPT {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+.directions, .loading {
+    margin: auto;
+}
+.directions {
+    max-width: 45em;
+    font-style: oblique;
+    padding: 1em 0;
+}
+.prompt {
+    margin: auto;
+    max-width: 25em;
+}
+.submit {
+    margin: auto;
+}
+.response {
+    max-width: 75em;
+    margin: auto;
+}
+.message {
+    padding-bottom: .4em;
+}
