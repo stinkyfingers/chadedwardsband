@@ -9,6 +9,7 @@ env:
     REACT_APP_AWS_ACCESS_KEY_ID: "/chadedwards/aws_access_key_id"
     REACT_APP_CHADLIBS_SPREADSHEET_ID: "/chadedwards/chadlibs_spreadsheet_id"
     REACT_APP_CHADLIBS_SHEET_ID: "/chadedwards/chadlibs_sheet_id"
+    REACT_APP_GPT_KEY: "/chadedwards/gpt_key"
 phases:
   install:
     runtime-versions:
@@ -24,6 +25,7 @@ phases:
       - echo "REACT_APP_AWS_ACCESS_KEY_ID=REACT_APP_AWS_ACCESS_KEY_ID" >> .env
       - echo "REACT_APP_CHADLIBS_SPREADSHEET_ID=REACT_APP_CHADLIBS_SPREADSHEET_ID" >> .env
       - echo "REACT_APP_CHADLIBS_SHEET_ID=REACT_APP_CHADLIBS_SHEET_ID" >> .env
+      - echo "REACT_APP_GPT_KEY=REACT_APP_GPT_KEY" >> .env
   build:
     commands:
       - cat .env

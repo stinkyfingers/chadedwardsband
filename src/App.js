@@ -11,6 +11,7 @@ import SongList from './components/SongList';
 import Home from './components/Home';
 import Tech from './components/Tech';
 import Chadlibs from './components/chadlibs/Chadlibs';
+import ChadGPT from './components/chadgpt/ChadGPT';
 import './App.css';
 import useSongList from './hooks/songlist';
 import useCalendar from './hooks/calendar';
@@ -42,6 +43,7 @@ export const Router = ({ setErr }) => {
       <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
       <Route path='/tech' element={<Tech />} />
       <Route path='/libs/*' element={<Chadlibs />} />
+      <Route path='/gpt' element={<ChadGPT setErr={setErr} />} />
       <Route path='/' element={<Home />} />
     </Routes>
   );
@@ -49,7 +51,6 @@ export const Router = ({ setErr }) => {
 
 function App() {
   const [err, setErr] = React.useState();
-  
   React.useEffect(() => {
     WebFont.load({
       google: {

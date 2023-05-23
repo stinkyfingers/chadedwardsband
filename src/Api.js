@@ -1,6 +1,7 @@
 const liveEndpoint = "https://server.john-shenk.com/badlibs"; // TODO config
 // const localEndpoint = 'http://localhost:8088';
 const localEndpoint = "https://server.john-shenk.com/badlibs";
+const chatGPT = "https://api.openai.com/v1";
 
 const { NODE_ENV, REACT_APP_ENV } = process.env;
 const api = () => {
@@ -89,6 +90,27 @@ export const checkAuth = async({ token }) => {
     headers: {
       'Authorization': token
     }
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.message };
+  }
+  return data;
+};
+
+export const chatGptCompletion = async({ messages }) => {
+  const gptToken = process.env.REACT_APP_GPT_KEY;
+  const res = await fetch(`${chatGPT}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${gptToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'gpt-3.5-turbo',
+      messages: messages,
+      temperature: 0.7
+    })
   });
   const data = await res.json();
   if (res.status !== 200) {

@@ -17,6 +17,7 @@ const Header = ({ err }) => {
         <Link className={`link${path === '/video' && ' selected'}`} to="/video">Video</Link>
         <Link className={`link${path === '/tech' && ' selected'}`} to="/tech">Tech</Link>
         <Link className={`link${path === '/libs' && ' selected'}`} to="/libs">Chadlibs</Link>
+        <Link className={`link${path === '/gpt' && ' selected'}`} to="/gpt">ChadGPT</Link>
       </nav>
         { err ? <div className={'error'}>{JSON.stringify(err)}</div> : null }
     </div>
