@@ -4346,6 +4346,7 @@ __metadata:
     jwt-decode: "npm:^3.1.2"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-hamburger-menu: "npm:^1.2.1"
     react-image-gallery: "npm:^1.2.8"
     react-modal: "npm:^3.16.1"
     react-router-dom: "npm:^6.3.0"
@@ -10620,6 +10621,16 @@ __metadata:
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
   checksum: 6895a094484a767fb77f4c8dac084d1ce1cc8f0505dbd94244eadd6f6d8765bf4d4990546a67eccfd2f2204a803e3fec5a548b036fa27fe4a89a10c382e15682
+  languageName: node
+  linkType: hard
+
+"react-hamburger-menu@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "react-hamburger-menu@npm:1.2.1"
+  peerDependencies:
+    prop-types: ">=15.5.7"
+    react: ">=15.3.0"
+  checksum: 738f8322fc4473f5134d67d19c594af033d0e08b2fb23e8f583fa66cbddb83d8aa729a411993cd9c4ae040b9fdabb59edda90a40d3ab8f167762d254497ca5f4
   languageName: node
   linkType: hard
 
