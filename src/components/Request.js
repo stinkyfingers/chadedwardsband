@@ -4,7 +4,7 @@ import SongList from './SongList';
 import { getIP, submitRequest } from '../Api';
 import '../css/request.css';
 
-const minutesPermittedBeforeGig = 30;
+const minutesPermittedBeforeGig = 999930;
 const minutesPermittedAfterGig = -10;
 
 const activeGig = (dates) => {
@@ -92,7 +92,13 @@ const Request = ({
             </div>
             <div>
               <span className='label'>Message to the Band</span>
-              <input type='text' name='message' value={request.message} onChange={handleChange} />
+              <input
+                type='text'
+                name='message'
+                value={request.message}
+                onChange={handleChange}
+                placeholder={`example: "I'd like to give my phone number to the guitarist. It's 612-555..."`}
+              />
             </div>
             <button onClick={handleClick} disabled={request.song === '' || status !== '' || loading}>Submit</button>
             { loading && <div className='status'>Processing...</div> }
