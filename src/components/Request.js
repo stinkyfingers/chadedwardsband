@@ -4,7 +4,7 @@ import SongList from './SongList';
 import { getIP, submitRequest } from '../Api';
 import '../css/request.css';
 
-const minutesPermittedBeforeGig = 999930;
+const minutesPermittedBeforeGig = 30;
 const minutesPermittedAfterGig = -10;
 
 const activeGig = (dates) => {
@@ -24,7 +24,7 @@ const Request = ({
   dates,
   calendarErr,
 }) => {
-  const [request, setRequest] = React.useState({ song:'', artist:'', message:''});
+  const [request, setRequest] = React.useState({ song:'', artist:'', message:'', name: '' });
   const [status, setStatus] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [active, setActive] = React.useState(false);
@@ -79,8 +79,13 @@ const Request = ({
           <h2>Request a Song</h2>
           <div className='controls'>
             <div className='directions'>
-              Requesting a song is only available during select times. Users are limited in the number of requests they can make.
-              To request a song, select a song from the list below or enter the song and artist in the fields below.
+              Requesting a song is only available during select times. Y'all are limited in the number of requests y'all can make.
+              To request a song, enter your name and select a song from the list below or enter the song and artist manually. We reserve the right
+              to ignore and/or ridicule requests.
+            </div>
+            <div>
+              <span className='label'>Your Name</span>
+              <input type='text' name='name' value={request.name} onChange={handleChange} />
             </div>
             <div>
               <span className='label'>Song</span>
@@ -97,10 +102,10 @@ const Request = ({
                 name='message'
                 value={request.message}
                 onChange={handleChange}
-                placeholder={`example: "I'd like to give my phone number to the guitarist. It's 612-555..."`}
+                placeholder={`example: "Give my phone number to the guitarist. It's 612-555..."`}
               />
             </div>
-            <button onClick={handleClick} disabled={request.song === '' || status !== '' || loading}>Submit</button>
+            <button onClick={handleClick} disabled={request.song === '' || request.name === '' || status !== '' || loading}>Submit</button>
             { loading && <div className='status'>Processing...</div> }
           </div>
         </div>
