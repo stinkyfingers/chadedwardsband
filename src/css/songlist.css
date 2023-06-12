@@ -1,3 +1,8 @@
 .songlist {
     display: inline-block;
 }
+
+.selectable:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
