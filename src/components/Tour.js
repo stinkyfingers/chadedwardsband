@@ -33,7 +33,8 @@ const Tour = ({ pastDates, upcomingDates, err }) => {
             </thead>
             <tbody>
                 {dates.map(event => {
-                    const date = event.start.dateTime ? new Date(event.start.dateTime).toLocaleDateString() : new Date(event.start.date).toLocaleDateString();
+                    const date = event.start.dateTime ? new Date(event.start.dateTime).toLocaleDateString() :
+                      new Date(new Date(event.start.date).getTime() + new Date(event.start.date).getTimezoneOffset() * 60000).toLocaleDateString();
                     const time = event.start.dateTime ? new Date(event.start.dateTime).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}) : 'TBA';
                     const endTime = event.end.dateTime ? new Date(event.end.dateTime).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}) : null;
                     return <tr key={event.id} className={`eventRow ${ styleEventSummary(event.summary, calendarType)}`}>
