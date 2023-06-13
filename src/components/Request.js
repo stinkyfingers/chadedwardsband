@@ -9,13 +9,19 @@ const minutesPermittedAfterGig = -10;
 
 const activeGig = (dates) => {
   const now = new Date();
-  return dates.filter((date) => {
+  let nextGig = null;
+  const active = dates.filter((date) => {
     const start = new Date(date.start.dateTime || date.start.date);
     start.setMinutes(start.getMinutes() - minutesPermittedBeforeGig);
     const end = new Date(date.end.dateTime || date.end.date);
     end.setMinutes(end.getMinutes() - minutesPermittedAfterGig);
+    if ((nextGig === null && start > now) || (start < nextGig && start > now)) {
+      nextGig = start;
+    }
     return start < now && end > now;
   }).length > 0;
+  
+  return { active, nextGig: nextGig };
 };
 
 const Request = ({
@@ -26,13 +32,15 @@ const Request = ({
 }) => {
   const [request, setRequest] = React.useState({ song:'', artist:'', message:'', name: '' });
   const [status, setStatus] = React.useState('');
+  const [nextGig, setNextGig] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [active, setActive] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [err, setErr] = React.useState();
   React.useEffect(() => {
-    const active = activeGig(dates);
+    const { active, nextGig } = activeGig(dates);
     setActive(active);
+    setNextGig(nextGig);
   }, [dates]);
 
   const handleClick = async() => {
@@ -69,7 +77,11 @@ const Request = ({
 		<div className="request">
       <div>
         <button onClick={() => setOpen(!open)} disabled={!active}>{open ? 'Hide' : 'Request a Song'}</button>
-        { !active && <div className='inactive'>Requesting a song is only available during select times.</div> }
+        { !active && 
+          <div className='inactive'>
+            Requesting a song is only available during select times.
+            { nextGig && <p>Next available time: {nextGig.toLocaleString()}</p> }
+          </div> }
       </div>
       { active && open && 
         <div className='activeRequest'>
