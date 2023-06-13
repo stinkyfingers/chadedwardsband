@@ -6,6 +6,7 @@ import '../css/songlist.css';
 
 const SongList = ({
   songlist,
+  onSelect,
   err,
 }) => {
     const [sort, setSort] = React.useState({ field: 'title' });
@@ -20,7 +21,7 @@ const SongList = ({
             }
         })
         .map((song) => (
-      <tr key={song.Song}>
+      <tr key={song.Song} onClick={() => onSelect(song)} className={onSelect !== null ? 'selectable' : ''}>
         <td>{song.Song}</td>
         <td>{song['Artist Version']}</td>
         <td>{song['Genre/Decade']}</td>

@@ -1,30 +1,40 @@
-const liveEndpoint = "https://server.john-shenk.com/badlibs"; // TODO config
-// const localEndpoint = 'http://localhost:8088';
-const localEndpoint = "https://server.john-shenk.com/badlibs";
+const liveEndpoint = "https://server.john-shenk.com/chadedwardsapi";
+// const localEndpoint = "https://server.john-shenk.com/chadedwardsapi";
+const localEndpoint = "http://localhost:8088";
+const liveBadlibsEndpoint = "https://server.john-shenk.com/badlibs"; 
+const localBadlibsEndpoint = 'http://localhost:8088';
+// const localBadlibsEndpoint = "https://server.john-shenk.com/badlibs";
 const chatGPT = "https://api.openai.com/v1";
 
 const { NODE_ENV, REACT_APP_ENV } = process.env;
-const api = () => {
+const badLibsAPI = () => {
+  if (NODE_ENV === 'development' && REACT_APP_ENV !== 'live') {
+    return localBadlibsEndpoint;
+  }
+  return liveBadlibsEndpoint;
+};
+
+const chadEdwardsAPI = () => {
   if (NODE_ENV === 'development' && REACT_APP_ENV !== 'live') {
     return localEndpoint;
   }
   return liveEndpoint;
-};
+}
 
 export const list = async() => {
-  const res = await fetch(`${api()}/lib/all?domain=chadlibs`);
+  const res = await fetch(`${badLibsAPI()}/lib/all?domain=chadlibs`);
   const data = await res.json();
   return data;
 };
 
 export const get = async(id) => {
-  const res = await fetch(`${api()}/lib/get?id=${id}`);
+  const res = await fetch(`${badLibsAPI()}/lib/get?id=${id}`);
   const data = await res.json();
   return data;
 };
 
 export const update = async({ lib, token }) => {
-  const res = await fetch(`${api()}/lib/update`, {
+  const res = await fetch(`${badLibsAPI()}/lib/update`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +50,7 @@ export const update = async({ lib, token }) => {
 };
 
 export const create = async({ lib, token }) => {
-  const res = await fetch(`${api()}/lib/create`, {
+  const res = await fetch(`${badLibsAPI()}/lib/create`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -56,7 +66,7 @@ export const create = async({ lib, token }) => {
 };
 
 export const remove = async({ id, token }) => {
-  const res = await fetch(`${api()}/lib/delete?id=${id}`, {
+  const res = await fetch(`${badLibsAPI()}/lib/delete?id=${id}`, {
     method: 'DELETE',
     headers: {
       'Authorization': token
@@ -70,7 +80,7 @@ export const remove = async({ id, token }) => {
 };
 
 export const auth = async({ user }) => {
-  const res = await fetch(`${api()}/auth/upsert`, {
+  const res = await fetch(`${badLibsAPI()}/auth/upsert`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -85,7 +95,7 @@ export const auth = async({ user }) => {
 };
 
 export const checkAuth = async({ token }) => {
-  const res = await fetch(`${api()}/auth/health`, {
+  const res = await fetch(`${badLibsAPI()}/auth/health`, {
     method: 'GET',
     headers: {
       'Authorization': token
@@ -118,3 +128,25 @@ export const chatGptCompletion = async({ messages }) => {
   }
   return data;
 };
+
+export const getIP = async() => {
+  const res = await fetch('https://api.ipify.org?format=json');
+  const data = await res.json();
+  return data;
+};
+
+export const submitRequest = async({ request }) => {
+  const res = await fetch(`${chadEdwardsAPI()}/request`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
+    },
+    body: JSON.stringify(request)
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.message };
+  }
+  return data;
+}
