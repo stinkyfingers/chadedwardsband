@@ -1,9 +1,10 @@
 import React from 'react';
 import Error from './Error';
 import SongList from './SongList';
-import { getIP, submitRequest } from '../Api';
+import { submitRequest } from '../Api';
 import { useSearchParams } from 'react-router-dom';
 import '../css/request.css';
+import useSession from '../hooks/useSession';
 
 const minutesPermittedBeforeGig = 30;
 const minutesPermittedAfterGig = -10;
@@ -39,6 +40,7 @@ const Request = ({
   const [loading, setLoading] = React.useState(false);
   const [err, setErr] = React.useState();
   const [searchParams] = useSearchParams();
+  const [session] = useSession();
   React.useEffect(() => {
     const { active, nextGig } = activeGig(dates);
     if (searchParams.get("admin") === 'true') {
@@ -53,8 +55,7 @@ const Request = ({
   const handleClick = async() => {
     setLoading(true);
     try {
-      const ip = await getIP();
-      const req = { ...request, ip: ip.ip };
+      const req = { ...request, session };
       const resp = await submitRequest({ request: req });
       if (resp.error) {
         setErr(resp.error);
