@@ -2,6 +2,7 @@ import React from 'react';
 import Error from './Error';
 import SongList from './SongList';
 import { getIP, submitRequest } from '../Api';
+import { useSearchParams } from 'react-router-dom';
 import '../css/request.css';
 
 const minutesPermittedBeforeGig = 30;
@@ -37,11 +38,17 @@ const Request = ({
   const [active, setActive] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [err, setErr] = React.useState();
+  const [searchParams] = useSearchParams();
   React.useEffect(() => {
     const { active, nextGig } = activeGig(dates);
+    if (searchParams.get("admin") === 'true') {
+      setActive(true);
+      setNextGig(nextGig);
+      return;
+    }
     setActive(active);
     setNextGig(nextGig);
-  }, [dates]);
+  }, [dates, searchParams]);
 
   const handleClick = async() => {
     setLoading(true);
@@ -64,7 +71,7 @@ const Request = ({
   const onSelect = (song) => {
     setStatus('');
     setErr(null);
-    const newSong = { song: song['Song'], artist: song['Artist Version'], message: request.message };
+    const newSong = { song: song['Song'], artist: song['Artist Version'], message: request.message, name: request.name };
     setRequest(newSong);
   }
   const handleChange = (e) => {
