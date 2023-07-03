@@ -40,7 +40,7 @@ const Request = ({
   const [loading, setLoading] = React.useState(false);
   const [err, setErr] = React.useState();
   const [searchParams] = useSearchParams();
-  const [session] = useSession();
+  const session = useSession();
   React.useEffect(() => {
     const { active, nextGig } = activeGig(dates);
     if (searchParams.get("admin") === 'true') {
