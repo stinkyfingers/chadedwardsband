@@ -105,15 +105,15 @@ const Request = ({
             </div>
             <div>
               <span className='label'>Your Name</span>
-              <input type='text' name='name' value={request.name} onChange={handleChange} />
+              <input type='text' name='name' value={request.name} onChange={handleChange} maxLength={50} />
             </div>
             <div>
               <span className='label'>Song</span>
-              <input type='text' name='song' value={request.song} onChange={handleChange} />
+              <input type='text' name='song' value={request.song} onChange={handleChange} maxLength={50} />
             </div>
             <div>
               <span className='label'>Artist</span>
-              <input type='text' name='artist' value={request.artist} onChange={handleChange} />
+              <input type='text' name='artist' value={request.artist} onChange={handleChange} maxLength={50} />
             </div>
             <div>
               <span className='label'>Message to the Band</span>
@@ -122,6 +122,7 @@ const Request = ({
                 name='message'
                 value={request.message}
                 onChange={handleChange}
+                maxLength={100}
                 placeholder={`example: "Give my phone number to the guitarist. It's 612-555..."`}
               />
             </div>
@@ -130,6 +131,9 @@ const Request = ({
           </div>
         </div>
       }
+      <div className='pastRequests'>
+        <a href='/requests'>View Past Requests</a>
+      </div>
       <SongList songlist={songlist} songErr={songErr} onSelect={onSelect} />
     </div>
 	);

@@ -143,4 +143,19 @@ export const submitRequest = async({ request }) => {
     return { error: data.message };
   }
   return data;
-}
+};
+
+export const listRequests = async() => {
+  const res = await fetch(`${chadEdwardsAPI()}/requests`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
+    }
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.message };
+  }
+  return data;
+};
