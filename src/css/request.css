@@ -9,3 +9,9 @@
 .directions {
     padding: 1em;
 }
+.pastRequests:hover {
+    opacity: .5;
+}
+.pastRequests {
+    padding: 1em;
+}

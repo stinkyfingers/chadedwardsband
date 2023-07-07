@@ -1,0 +1,12 @@
+.requests {
+    margin: auto;
+    display: inline-block;
+}
+.requestTable {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.requestData {
+    max-width: 20%;
+}
