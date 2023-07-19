@@ -93,7 +93,6 @@ const Request = ({
         <div className='activeRequest'>
           { calendarErr && <Error err={calendarErr} />}
           { err && <Error err={err} />}
-          { status && <div className='status'>{status}</div> }
           <h2>Request a Song</h2>
           <div className='controls'>
             <div className='directions'>
@@ -126,6 +125,7 @@ const Request = ({
             </div>
             <button onClick={handleClick} disabled={request.song === '' || request.name === '' || status !== '' || loading}>Submit</button>
             { loading && <div className='status'>Processing...</div> }
+            { status && <div className='status'>{status}</div> }
           </div>
         </div>
       }
