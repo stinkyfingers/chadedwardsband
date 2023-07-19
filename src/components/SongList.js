@@ -2,14 +2,18 @@ import React from 'react';
 import Error from './Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown, faArrowUp, faArrowsV } from '@fortawesome/free-solid-svg-icons'
+import Request from './Request';
 import '../css/songlist.css';
 
 const SongList = ({
   songlist,
   onSelect,
+  dates,
+  calendarErr,
   err,
 }) => {
-    const [sort, setSort] = React.useState({ field: 'title' });
+  const [sort, setSort] = React.useState({ field: 'title', asc: true });
+  const [song, setSong] = React.useState({ song: '', artist: '', message: '', name: '' });
   const rows = () => {
     if (!songlist.length) return null;
     return songlist
@@ -21,7 +25,7 @@ const SongList = ({
             }
         })
         .map((song) => (
-      <tr key={song.Song} onClick={() => onSelect(song)} className={onSelect !== null ? 'selectable' : ''}>
+      <tr key={song.Song} onClick={() => setSong(song)} className={onSelect !== null ? 'selectable' : ''}>
         <td>{song.Song}</td>
         <td>{song['Artist Version']}</td>
         <td>{song['Genre/Decade']}</td>
@@ -47,6 +51,7 @@ const SongList = ({
   return (
     <div className="songlist">
       { err && <Error err={err} />}
+      <Request dates={dates} calendarErr={calendarErr} song={song} />
       <table>
         <thead>
           <tr>

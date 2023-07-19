@@ -1,6 +1,5 @@
 import React from 'react';
 import Error from './Error';
-import SongList from './SongList';
 import { submitRequest } from '../Api';
 import { useSearchParams } from 'react-router-dom';
 import '../css/request.css';
@@ -27,8 +26,7 @@ const activeGig = (dates) => {
 };
 
 const Request = ({
-  songlist,
-  songErr,
+  song,
   dates,
   calendarErr,
 }) => {
@@ -51,6 +49,12 @@ const Request = ({
     setActive(active);
     setNextGig(nextGig);
   }, [dates, searchParams]);
+  React.useEffect(() => {
+    if (!song) return;
+    setStatus('');
+    setErr(null);
+    setRequest((prev) => ({ ...prev, song: song['Song'], artist: song['Artist Version'] }));
+  }, [song]);
 
   const handleClick = async() => {
     setLoading(true);
@@ -68,12 +72,6 @@ const Request = ({
     } finally {
       setLoading(false);
     }
-  }
-  const onSelect = (song) => {
-    setStatus('');
-    setErr(null);
-    const newSong = { song: song['Song'], artist: song['Artist Version'], message: request.message, name: request.name };
-    setRequest(newSong);
   }
   const handleChange = (e) => {
     setStatus('');
@@ -134,7 +132,6 @@ const Request = ({
       <div className='pastRequests'>
         <a href='/requests'>View Past Requests</a>
       </div>
-      <SongList songlist={songlist} songErr={songErr} onSelect={onSelect} />
     </div>
 	);
 };

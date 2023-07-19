@@ -8,7 +8,6 @@ import Tour from './components/Tour';
 import Photos from './components/Photos';
 import Video from './components/Video';
 import SongList from './components/SongList';
-import Request from './components/Request';
 import Requests from './components/Requests';
 import Home from './components/Home';
 import Tech from './components/Tech';
@@ -42,9 +41,8 @@ export const Router = ({ setErr }) => {
       <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
       <Route path='/photos' element={<Photos setErr={ setErr } />} />
       <Route path='/video' element={<Video />} />
-      <Route path='/songs' element={<SongList songlist={songlist} err={songErr} />} />
+      <Route path='/songs' element={<SongList songlist={songlist} err={songErr} dates={[...pastDates, ...upcomingDates]} calendarErr={calendarErr}  />} />
       <Route path='/requests' element={<Requests />} />
-      <Route path='/request' element={<Request songlist={songlist} songErr={songErr} dates={[...pastDates, ...upcomingDates]} calendarErr={calendarErr} />} />
       <Route path='/tech' element={<Tech />} />
       <Route path='/libs/*' element={<Chadlibs />} />
       <Route path='/gpt' element={<ChadGPT setErr={setErr} />} />
