@@ -13,6 +13,8 @@ import Home from './components/Home';
 import Tech from './components/Tech';
 import Chadlibs from './components/chadlibs/Chadlibs';
 import ChadGPT from './components/chadgpt/ChadGPT';
+import Admin from './components/admin/Admin';
+import AdminPhotoUpload from './components/admin/PhotoUpload';
 import './App.css';
 import useSongList from './hooks/songlist';
 import useCalendar from './hooks/calendar';
@@ -46,6 +48,9 @@ export const Router = ({ setErr }) => {
       <Route path='/tech' element={<Tech />} />
       <Route path='/libs/*' element={<Chadlibs />} />
       <Route path='/gpt' element={<ChadGPT setErr={setErr} />} />
+      <Route path='/admin' element={<Admin setErr={setErr} />}>
+        <Route path='photos' element={<AdminPhotoUpload setErr={setErr} />} />   
+      </Route>
       <Route path='/' element={<Home />} />
     </Routes>
   );

@@ -1,6 +1,6 @@
 const liveEndpoint = "https://server.john-shenk.com/chadedwardsapi";
 // const localEndpoint = "https://server.john-shenk.com/chadedwardsapi";
-const localEndpoint = "http://localhost:8088";
+const localEndpoint = "http://localhost:8087";
 const liveBadlibsEndpoint = "https://server.john-shenk.com/badlibs"; 
 const localBadlibsEndpoint = 'http://localhost:8088';
 // const localBadlibsEndpoint = "https://server.john-shenk.com/badlibs";
@@ -83,7 +83,8 @@ export const auth = async({ user }) => {
   const res = await fetch(`${badLibsAPI()}/auth/upsert`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
     },
     body: JSON.stringify(user)
   });
@@ -98,7 +99,8 @@ export const checkAuth = async({ token }) => {
   const res = await fetch(`${badLibsAPI()}/auth/health`, {
     method: 'GET',
     headers: {
-      'Authorization': token
+      'Authorization': token,
+      'Origin': 'https://www.chadedwardsband.com'
     }
   });
   const data = await res.json();
@@ -159,3 +161,95 @@ export const listRequests = async() => {
   }
   return data;
 };
+
+export const apiAuth = async({ admin }) => {
+  const url = `${chadEdwardsAPI()}/auth`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com',
+      'Authorization': `Bearer ${admin.access_token}`
+    },
+  })
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}
+
+export const googleUser = async(token) => {
+  const url = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${token}`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}
+
+export const listGooglePhotos = async(jwt, nextPageToken) => {
+  const url = `https://photoslibrary.googleapis.com/v1/mediaItems?pageSize=50${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${jwt}`
+    }
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+};
+
+export const getGooglePhotos = async(jwt, ids) => {
+  const idQuery = ids.map(id => `mediaItemIds=${id}`).join('&');
+  const url = `https://photoslibrary.googleapis.com/v1/mediaItems:batchGet?${idQuery}`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${jwt}`
+    }
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+};
+
+export const sendPhotos = async(jwt, photos) => {
+  const photoRequests = Object.values(photos).map((photo) => {
+    return ({
+      url: photo.baseUrl,
+      filename: photo.filename,
+      mimeType: photo.mimeType,
+      id: photo.id,
+      metadata: photo.metadata
+    })
+  });
+  const url = `${chadEdwardsAPI()}/photos/upload`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': jwt,
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
+    },
+    body: JSON.stringify(photoRequests)
+  });
+  console.log('hoto res',res)
+  const data = await res.json();
+  console.log('data', data)
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}

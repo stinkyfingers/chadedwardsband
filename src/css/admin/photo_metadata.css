@@ -1,0 +1,6 @@
+.category {
+    font-size: .6em;
+}
+.category>select {
+    width: 100%;
+}

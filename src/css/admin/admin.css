@@ -1,0 +1,21 @@
+.adminHeader {
+    border-bottom: 1px solid var(--dark-grey);
+    width: 100%;
+}
+.photoUpload>.controls {
+    padding: .5em;
+}
+button.upload {
+    margin: 1em 0;
+}
+@media (max-width: 600px) {
+    .listNav {
+        display: none;
+    }
+}
+
+@media (min-width: 600px) {
+    .burgerNav {
+        display: none;
+    }
+}
