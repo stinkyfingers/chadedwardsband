@@ -88,12 +88,14 @@ const AdminPhotoUpload = ({ setErr }) => {
 	};
 	
 	const handleSend = async () => {
+		setLoading(true);
 		try {
 			const res = await sendPhotos(admin.access_token, selectedPhotos);
-			console.log(res);
 			setMsg(`Uploaded ${res.length} photos`);
 		} catch (err) {
 			setErr(err);
+		} finally {
+			setLoading(false);
 		}
 	};
 	

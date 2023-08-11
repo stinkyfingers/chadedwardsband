@@ -15,6 +15,7 @@ import Chadlibs from './components/chadlibs/Chadlibs';
 import ChadGPT from './components/chadgpt/ChadGPT';
 import Admin from './components/admin/Admin';
 import AdminPhotoUpload from './components/admin/PhotoUpload';
+import AdminPhotos from './components/admin/Photos';
 import './App.css';
 import useSongList from './hooks/songlist';
 import useCalendar from './hooks/calendar';
@@ -49,7 +50,8 @@ export const Router = ({ setErr }) => {
       <Route path='/libs/*' element={<Chadlibs />} />
       <Route path='/gpt' element={<ChadGPT setErr={setErr} />} />
       <Route path='/admin' element={<Admin setErr={setErr} />}>
-        <Route path='photos' element={<AdminPhotoUpload setErr={setErr} />} />   
+        <Route path='photos/upload' element={<AdminPhotoUpload setErr={setErr} />} />
+        <Route path='photos' element={<AdminPhotos setErr={setErr} />} />
       </Route>
       <Route path='/' element={<Home />} />
     </Routes>

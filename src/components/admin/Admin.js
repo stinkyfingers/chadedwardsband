@@ -13,7 +13,8 @@ const Header = () => {
 
 	const links = () => (
 		<div className='adminHeader'>
-			<Link className={`link${path === '/photos' && ' selected'}`} to="photos">Photo Upload</Link>
+			<Link className={`link${path === '/photos/upload' && ' selected'}`} to="photos/upload">Photo Upload</Link>
+			<Link className={`link${path === '/photos' && ' selected'}`} to="photos">Photos</Link>
 		</div>
 	);
 

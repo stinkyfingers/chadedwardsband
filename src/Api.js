@@ -245,9 +245,60 @@ export const sendPhotos = async(jwt, photos) => {
     },
     body: JSON.stringify(photoRequests)
   });
-  console.log('hoto res',res)
   const data = await res.json();
-  console.log('data', data)
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}
+
+export const listPhotos = async(jwt) => {
+  const url = `${chadEdwardsAPI()}/photos/list`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': jwt,
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
+    },
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}
+
+export const updateMetadata = async(jwt, metadata) => {
+  const url = `${chadEdwardsAPI()}/photos/update`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Authorization': jwt,
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
+    },
+    body: JSON.stringify(metadata)
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}
+
+export const deletePhoto = async(jwt, name) => {
+  console.log(name);
+  const url = `${chadEdwardsAPI()}/photos/delete?name=${name}`;
+  const res = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': jwt,
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
+    },
+  });
+  const data = await res.json();
   if (res.status !== 200) {
     return { error: data.error };
   }

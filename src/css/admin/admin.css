@@ -1,9 +1,16 @@
 .adminHeader {
     border-bottom: 1px solid var(--dark-grey);
     width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
+
 .photoUpload>.controls {
     padding: .5em;
+}
+button:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }
 button.upload {
     margin: 1em 0;

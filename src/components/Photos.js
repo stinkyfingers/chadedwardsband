@@ -2,52 +2,65 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import '../css/media.css';
 
-import AWS from 'aws-sdk';
-
-const accessKeyId = process.env.REACT_APP_AWS_ACCESS_KEY_ID;
-const secretAccessKey = process.env.REACT_APP_AWS_SECRET_ACCESS_KEY;
-const imageBucket = 'chadedwardsbandimages';
-const bucketUrl = `https://chadedwardsbandimages.s3.us-west-1.amazonaws.com/`;
-
-// randomize randomizes an array
-const randomize = (arr) => {
-  // swap swaps 2 array elements
-  const swap = (arr, i1, i2) => {
-    [arr[i1], arr[i2]] = [arr[i2], arr[i1]];
-  };
-  
-  let index = arr.length - 1;
-  while (index > 0) {
-    const rand = Math.floor(Math.random() * index);
-    swap(arr, index, rand);
-    index--;
-  }
-  return arr;
-};
+import { listPhotos } from '../Api';
 
 const Photos = ({ setErr }) => {
   const [images, setImages] = React.useState([]);
-  
-  AWS.config.update({ region: 'us-west-1', secretAccessKey, accessKeyId });
+  const [filteredImages, setFilteredImages] = React.useState([]);
+  const [filter, setFilter] = React.useState({});
+  const [filterOptions, setFilterOptions] = React.useState({});
   React.useEffect(() => {
-    const credentials = new AWS.Credentials(accessKeyId, secretAccessKey);
-    const s3 = new AWS.S3({ apiVersion: '2006-03-01', credentials });
-    s3.listObjects({Bucket: imageBucket}, (err, data) => {
-      if (err) {
+    listPhotos(null)
+      .then((res) => {
+        const options = { category: new Set(), tags: new Set() };
+        setImages(res.map((photoData) => ({
+          ...photoData,
+            original: photoData.image,
+            thumbnail: photoData.thumbnail,
+            originalTitle: photoData.filename,
+          })))
+        res.map((photoData) => {
+          if (photoData.category) options.category.add(photoData.category);
+          if (photoData.tags?.length) photoData.tags.forEach((tag) => options.tags.add(tag));
+        })
+        setFilterOptions(options)
+      })
+      .catch((err) => {
         console.warn(err)
-        return
-      }
-      const img = [];
-      data.Contents.forEach(datum => {
-        img.push({ original: `${bucketUrl}${datum.Key}`, thumbnail: `${bucketUrl}${datum.Key}`, originalTitle: datum.Key });
-      });      
-      setImages(randomize(img));
-    });
-  }, []);
+        setErr(err)
+      });
+  }, [setErr, setImages, filter]);
   
+  React.useEffect(() => {
+    setFilteredImages(images.filter((photoData) => {
+      return (!filter.category || photoData.category === filter.category) && (!filter.tags || (photoData.tags && photoData.tags.includes(filter.tags)));
+    }));
+  }, [filter, images])
+  
+  const handleChange = (e) => {
+    setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
   return <div className='media'>  
-    <ImageGallery items={images} />
+    <div className="controls">
+      <select value={filter.category} name="category" onChange={handleChange}>
+        <option key="select-category" value="">--select category--</option>
+        {
+          filterOptions.category ? Array.from(filterOptions.category).map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
+          )) : null
+        }
+      </select>
+      <select value={filter.tags} name="tags" onChange={handleChange}>
+        <option key="select-tag" value="">--select tag--</option>
+        {
+          filterOptions.tags ? Array.from(filterOptions.tags).map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
+          )) : null
+        }
+      </select>
+    </div>
+    <ImageGallery items={filteredImages} />
   </div>
 };
 
