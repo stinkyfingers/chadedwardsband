@@ -1,1 +1,16 @@
 @import "~react-image-gallery/styles/css/image-gallery.css";
+
+.controls {
+    display: flex;
+    justify-content: space-around;
+}
+.photoSelector {
+    max-width: 10em;
+}
+
+@media screen, (max-width: 1200px) {
+    .controls {
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+}

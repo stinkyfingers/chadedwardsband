@@ -22,7 +22,7 @@ textarea {
     min-height: 10em;
 }
 
-select {
+.rating {
     max-width: 4em;
 }
 
