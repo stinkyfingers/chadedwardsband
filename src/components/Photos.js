@@ -4,6 +4,11 @@ import '../css/media.css';
 
 import { listPhotos } from '../Api';
 
+const extractDate = (datetimeStr) => { 
+  const date = new Date(datetimeStr);
+  return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+}
+
 const Photos = ({ setErr }) => {
   const [images, setImages] = React.useState([]);
   const [filteredImages, setFilteredImages] = React.useState([]);
@@ -17,17 +22,21 @@ const Photos = ({ setErr }) => {
   React.useEffect(() => {
     listPhotos(null)
       .then((res) => {
-        const options = { category: new Set(), tags: new Set(), location: new Set() };
+        const options = { category: new Set(), tags: new Set(), location: new Set(), date: new Set() };
         setImages(res.map((photoData) => ({
           ...photoData,
             original: photoData.image,
             thumbnail: photoData.thumbnail,
             originalTitle: photoData.filename,
           })))
-        res.map((photoData) => {
+        res.forEach((photoData) => {
           if (photoData.category) options.category.add(photoData.category);
-          if (photoData.tags?.length) photoData.tags.forEach((tag) => options.tags.add(tag));
+          if (photoData.tags?.length) photoData.tags.forEach((tag) => {
+            if (!tag) return;
+            options.tags.add(tag);
+          });
           if (photoData.location?.label && photoData.location?.name) options.location.add(getCityState(photoData));
+          if (photoData.datetimeOriginal) options.date.add(extractDate(photoData.datetimeOriginal))
         })
         setFilterOptions(options)
       })
@@ -45,13 +54,15 @@ const Photos = ({ setErr }) => {
         !filter.tags || (photoData.tags && photoData.tags.includes(filter.tags))
       ) && (
         !filter.location || getCityState(photoData) === filter.location
+      ) && (
+        !filter.date || extractDate(photoData.datetimeOriginal) === filter.date
       )
     }));
   }, [filter, images])
   
   const handleChange = (e) => {
     setFilter((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  };
 
   return <div className='media'>  
     <div className="controls">
@@ -75,6 +86,16 @@ const Photos = ({ setErr }) => {
         <option key="select-location" value="">--location--</option>
         {
           filterOptions.location ? Array.from(filterOptions.location).map((opt) => (
+            <option key={opt} value={opt}>{opt}</option>
+          )) : null
+        }
+      </select>
+      <select className='photoSelector' value={filter.date} name="date" onChange={handleChange}>
+        <option key="select-date" value="">--date--</option>
+        {
+          filterOptions.date ? Array.from(filterOptions.date).sort((a, b) => (
+            a < b ? 1 : -1
+          )).map((opt) => (
             <option key={opt} value={opt}>{opt}</option>
           )) : null
         }

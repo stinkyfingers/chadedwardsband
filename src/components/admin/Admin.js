@@ -35,7 +35,7 @@ const Header = () => {
 }
 
 const Admin = ({ setErr }) => {
-	const [admin, setAdmin] = React.useState(JSON.parse(localStorage.getItem('ce_admin') || '{}'));
+	const [admin, setAdmin] = React.useState(JSON.parse(localStorage.getItem('ce_admin') || null ));
 	React.useEffect(() => {
 		if (!admin) {
 			return;
@@ -43,8 +43,9 @@ const Admin = ({ setErr }) => {
 		apiAuth({ admin }).then((res) => {
 			if (!res || res?.health !== 'healthy') {
 				setAdmin(null);
+				localStorage.removeItem('ce_admin');
 			}
-		})
+		});
 	}, [admin]);
 	return (
 		<div>
