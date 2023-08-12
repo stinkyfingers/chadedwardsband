@@ -9,6 +9,9 @@ const categories = [
 ];
 
 const PhotoMetadata = ({ id, metadata, handleMetadata }) => {
+	const handleChange = (e) => {
+		handleMetadata({ id, category: metadata.category, tags: e.target.value.split(',').map((val) => val.trim()) })
+	}
 	return (
 		<div>
 			<div className='category'>
@@ -20,7 +23,7 @@ const PhotoMetadata = ({ id, metadata, handleMetadata }) => {
 				</select>
 			</div>
 			<div className='tags'>
-				<input type='text' placeholder="tags" defaultValue={metadata?.tags} onChange={(e) => handleMetadata({ id, category: metadata.category, tags: e.target.value })}/>
+				<input type='text' placeholder="tags" defaultValue={metadata?.tags} onChange={handleChange}/>
 			</div>
     </div>
 	);

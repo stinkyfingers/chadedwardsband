@@ -23,11 +23,11 @@ const AdminPhotos = ({ setErr }) => {
           setErr(photoData.error);
           return;
         }
-        setPhotos(photoData);
+        setPhotos(photoData.sort((a, b) => a.filename > b.filename ? 1 : -1));
         setMetadata(() => {
           const data = {}
           photoData.forEach((photo) => {
-            data[photo.filename] = photo.metadata
+            data[photo.filename] = photo
           })
           return data;
         });

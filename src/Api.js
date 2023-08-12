@@ -288,7 +288,6 @@ export const updateMetadata = async(jwt, metadata) => {
 }
 
 export const deletePhoto = async(jwt, name) => {
-  console.log(name);
   const url = `${chadEdwardsAPI()}/photos/delete?name=${name}`;
   const res = await fetch(url, {
     method: 'DELETE',

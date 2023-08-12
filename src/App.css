@@ -7,6 +7,7 @@
   top: 0;
   width: 100%;
   background-color: var(--main);
+  z-index: 10;
 }
 
 .body {
