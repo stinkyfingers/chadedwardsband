@@ -1,6 +1,10 @@
-div.calendar {
-}
+.coordinates {
+    background-color: red;
+    width: .6em;
+    height: .6em;
 
+    border-radius: .3em;
+}
 table.calendar {
     margin: auto;
     border-collapse: collapse;

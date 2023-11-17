@@ -1,5 +1,6 @@
 import React from 'react';
 import Error from './Error';
+import Map from './Map';
 import '../css/tour.css';
 
 // values that alter the calendar row style
@@ -7,6 +8,7 @@ const oblique = ['canceled', 'cancelled', 'postponed'];
 const updated = ['updated', 'changed'];
 
 const Tour = ({ pastDates, upcomingDates, err }) => {
+    const [showMap, setShowMap] = React.useState(true);
     // styleEventSummary returns different style strings if the summary contains keywords. 
     const styleEventSummary = (summary, calendarType) => {
         if (oblique.some((val) => (summary.toLowerCase().includes(val)))) {
@@ -17,7 +19,7 @@ const Tour = ({ pastDates, upcomingDates, err }) => {
         }
         return '';
     };
-    
+
     const renderTable = (dates, calendarType) => {
         if (!dates.length) return null;
         dates = dates.sort((a, b) => {
@@ -47,9 +49,23 @@ const Tour = ({ pastDates, upcomingDates, err }) => {
             </tbody>
         </table>
     }
-    
-  return <div className={'Tour'}>
+
+    if (!upcomingDates || !upcomingDates.length) return;
+    return <div className={'Tour'}>
       { err && <Error err={err} /> }
+      { showMap ? (
+        <div>
+            <Map upcomingDates={upcomingDates}/>
+        </div>
+        ) : null }
+      <div>
+          <button
+             className='mapButton'
+             onClick={() => setShowMap(!showMap)}
+          >
+              {showMap ? 'Hide Tour Map' : 'Show Tour Map'}
+          </button>
+      </div>
       <div className={'calendar'}>
           <h3 className={'upcomfingDates'}>Upcoming Dates</h3>
          {renderTable(upcomingDates, 'upcoming')}

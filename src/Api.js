@@ -303,3 +303,15 @@ export const deletePhoto = async(jwt, name) => {
   }
   return data;
 }
+
+export const geocode = async(address) => {
+  const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`;
+  const res = await fetch(url, {
+    method: 'GET',
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}

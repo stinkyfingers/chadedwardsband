@@ -28,6 +28,7 @@ const useCalendar = () => {
           } else {
             setPastDates(dates => [...dates, event]);
           }
+
           return null;
         })
       }).catch(setErr)
