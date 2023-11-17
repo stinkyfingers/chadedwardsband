@@ -7,11 +7,10 @@ const containerStyle = {
   height: '70vh'
 };
 
-const defaultZoom = 8;
+const defaultZoom = 7;
 
 const center = {
-  lat: 44.96299772831755,
-  lng: -92.76016943115937
+  lat: 45.67773969349096, lng: -92.67931217348703
 };
 
 const coordKey = (coords) => {
