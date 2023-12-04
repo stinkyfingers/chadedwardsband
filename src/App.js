@@ -79,6 +79,9 @@ function App() {
             <Router setErr={setErr} />
           </div>
         </BrowserRouter>
+        <button onClick={() => {
+          throw new Error('Test Error 2');
+        }}>ERROR</button>
       </div>
     );
 }
