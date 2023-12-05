@@ -10,7 +10,6 @@ env:
     REACT_APP_CHADLIBS_SPREADSHEET_ID: "/chadedwards/chadlibs_spreadsheet_id"
     REACT_APP_CHADLIBS_SHEET_ID: "/chadedwards/chadlibs_sheet_id"
     REACT_APP_GPT_KEY: "/chadedwards/gpt_key"
-    REACT_APP_SENTRY_DSN: "/chadedwards/sentry_dsn"
 phases:
   install:
     runtime-versions:
@@ -28,7 +27,6 @@ phases:
       - echo "REACT_APP_CHADLIBS_SPREADSHEET_ID=REACT_APP_CHADLIBS_SPREADSHEET_ID" >> .env
       - echo "REACT_APP_CHADLIBS_SHEET_ID=REACT_APP_CHADLIBS_SHEET_ID" >> .env
       - echo "REACT_APP_GPT_KEY=REACT_APP_GPT_KEY" >> .env
-      - echo "REACT_APP_SENTRY_DSN=$REACT_APP_SENTRY_DSN" >> .env
   build:
     commands:
       - cat .env
