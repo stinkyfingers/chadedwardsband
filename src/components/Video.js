@@ -1,5 +1,5 @@
 import React from 'react';
-import epk from '../videos/epk.mp4';
+import epk from '../videos/epk25.mp4';
 import '../css/video.css';
 
 const Video = () => {
