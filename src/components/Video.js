@@ -1,26 +1,19 @@
 import React from 'react';
+import epk from '../videos/epk2.mp4';
 import '../css/video.css';
-
-const YouTubeEmbed = ({ id }) => (
-  <div className="video-responsive">
-    <iframe
-      width="853"
-      height="480"
-      src={`https://www.youtube.com/embed/${id}`}
-      border="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-      title="Embedded youtube"
-    />
-  </div>
-);
 
 const Video = () => {
   return (
     <div className='video'>
       <ul className='video-list'>
         <li>
-          <YouTubeEmbed id='1WlBkyeZvlE' />
+          <h5>EPK</h5>
+          <video
+            className='video-player'
+            controls
+            >
+            <source src={epk} type='video/mp4' />
+          </video>
         </li>
       </ul>
     </div>

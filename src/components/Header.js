@@ -15,6 +15,7 @@ const Header = ({ err }) => {
       <Link className={`link${path === '/about' && ' selected'}`} to="/about">About</Link>
       <Link className={`link${(path === '/songs' || path === '/request') && ' selected'}`} to="/songs">Songs</Link>
       <Link className={`link${path === '/photos' && ' selected'}`} to="/photos">Photos</Link>
+      <Link className={`link${path === '/video' && ' selected'}`} to="/video">Videos</Link>
       <Link className={`link${path === '/tech' && ' selected'}`} to="/tech">Tech</Link>
       <Link className={`link${path === '/libs' && ' selected'}`} to="/libs">Chadlibs</Link>
       <Link className={`link${path === '/gpt' && ' selected'}`} to="/gpt">ChadGPT</Link>
