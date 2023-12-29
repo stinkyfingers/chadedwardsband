@@ -1,5 +1,5 @@
 import React from 'react';
-import epk from '../videos/epk2.mp4';
+import epk from '../videos/epk2.mov';
 import '../css/video.css';
 
 const Video = () => {
@@ -11,8 +11,10 @@ const Video = () => {
           <video
             className='video-player'
             controls
-            >
-            <source src={epk} type='video/mp4' />
+            type='video/mp4'
+          >
+            <source src={epk} type='video/webm' />
+            Your browser does not support the video tag.
           </video>
         </li>
       </ul>
