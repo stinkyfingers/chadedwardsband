@@ -2584,82 +2584,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry-internal/tracing@npm:7.84.0":
-  version: 7.84.0
-  resolution: "@sentry-internal/tracing@npm:7.84.0"
-  dependencies:
-    "@sentry/core": "npm:7.84.0"
-    "@sentry/types": "npm:7.84.0"
-    "@sentry/utils": "npm:7.84.0"
-  checksum: 366827521d18e220db051ab28e8290b3b4c48588706b85553990f3466710ecb5d00fb57ddb64d4c893f10182bfbf4f8ba7de79438071bc8a22f1a77065ea89b7
-  languageName: node
-  linkType: hard
-
-"@sentry/browser@npm:7.84.0":
-  version: 7.84.0
-  resolution: "@sentry/browser@npm:7.84.0"
-  dependencies:
-    "@sentry-internal/tracing": "npm:7.84.0"
-    "@sentry/core": "npm:7.84.0"
-    "@sentry/replay": "npm:7.84.0"
-    "@sentry/types": "npm:7.84.0"
-    "@sentry/utils": "npm:7.84.0"
-  checksum: 14fe428cad492150d6be9b431049bd8a6dd3bcd12b977fd2704628c7b888611112b6b41e5257c79e9147c1d7018b36e84841be1a5212432f60a8df9a25d911f6
-  languageName: node
-  linkType: hard
-
-"@sentry/core@npm:7.84.0":
-  version: 7.84.0
-  resolution: "@sentry/core@npm:7.84.0"
-  dependencies:
-    "@sentry/types": "npm:7.84.0"
-    "@sentry/utils": "npm:7.84.0"
-  checksum: 1305eb8727dc4f942b52f34b36fe8d21b61ae754d51371bc74db6d52867688e9bf1a66303699e61239d0bd0731d457250ba761dc31a1dbe74c38ea3dd65f27ef
-  languageName: node
-  linkType: hard
-
-"@sentry/react@npm:^7.84.0":
-  version: 7.84.0
-  resolution: "@sentry/react@npm:7.84.0"
-  dependencies:
-    "@sentry/browser": "npm:7.84.0"
-    "@sentry/types": "npm:7.84.0"
-    "@sentry/utils": "npm:7.84.0"
-    hoist-non-react-statics: "npm:^3.3.2"
-  peerDependencies:
-    react: 15.x || 16.x || 17.x || 18.x
-  checksum: d5b4b2ce2e4e7009ec1f2bcab1b008d8fab29cfb2ac4a818b6e2f6a444e1b690115c081da14ee2a35ec61b9b923c2faab0fa41a4f26af2f86d621cf1b9fe7bd8
-  languageName: node
-  linkType: hard
-
-"@sentry/replay@npm:7.84.0":
-  version: 7.84.0
-  resolution: "@sentry/replay@npm:7.84.0"
-  dependencies:
-    "@sentry-internal/tracing": "npm:7.84.0"
-    "@sentry/core": "npm:7.84.0"
-    "@sentry/types": "npm:7.84.0"
-    "@sentry/utils": "npm:7.84.0"
-  checksum: 6fccd3e9f4727e5ba78d5e1a036ed285ab5d003c32fd3ceef6f94d86f9eb99a9e8093606ab83a321b7649e4a59b564f36864744bafbff73c15f90f3c1a86e7c1
-  languageName: node
-  linkType: hard
-
-"@sentry/types@npm:7.84.0":
-  version: 7.84.0
-  resolution: "@sentry/types@npm:7.84.0"
-  checksum: f1e9e3d682943bd4ae40e690690397d8dad8e8404a3d7fa1e847046b221e00d04427964ee01eb7a11ac897373fa85b768862721cbe604c248b276449d5b46943
-  languageName: node
-  linkType: hard
-
-"@sentry/utils@npm:7.84.0":
-  version: 7.84.0
-  resolution: "@sentry/utils@npm:7.84.0"
-  dependencies:
-    "@sentry/types": "npm:7.84.0"
-  checksum: a122b28d51851ed3562a06160c8b37072914ee2499634351e699b926c26685231258cc9e28fb0e8677bea4ca5441969386e6e97102b832e98f92a7960d0b2d6e
-  languageName: node
-  linkType: hard
-
 "@sinclair/typebox@npm:^0.24.1":
   version: 0.24.51
   resolution: "@sinclair/typebox@npm:0.24.51"
@@ -4664,7 +4588,6 @@ __metadata:
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
     "@react-google-maps/api": "npm:^2.19.2"
     "@react-oauth/google": "npm:^0.9.0"
-    "@sentry/react": "npm:^7.84.0"
     "@testing-library/jest-dom": "npm:^5.16.4"
     "@testing-library/react": "npm:^13.3.0"
     "@testing-library/user-event": "npm:^13.5.0"
@@ -7292,15 +7215,6 @@ __metadata:
   bin:
     he: bin/he
   checksum: a27d478befe3c8192f006cdd0639a66798979dfa6e2125c6ac582a19a5ebfec62ad83e8382e6036170d873f46e4536a7e795bf8b95bf7c247f4cc0825ccc8c17
-  languageName: node
-  linkType: hard
-
-"hoist-non-react-statics@npm:^3.3.2":
-  version: 3.3.2
-  resolution: "hoist-non-react-statics@npm:3.3.2"
-  dependencies:
-    react-is: "npm:^16.7.0"
-  checksum: fe0889169e845d738b59b64badf5e55fa3cf20454f9203d1eb088df322d49d4318df774828e789898dcb280e8a5521bb59b3203385662ca5e9218a6ca5820e74
   languageName: node
   linkType: hard
 
@@ -11388,7 +11302,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.13.1, react-is@npm:^16.7.0":
+"react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: 33977da7a5f1a287936a0c85639fec6ca74f4f15ef1e59a6bc20338fc73dc69555381e211f7a3529b8150a1f71e4225525b41b60b52965bda53ce7d47377ada1

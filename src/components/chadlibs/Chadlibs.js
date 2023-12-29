@@ -9,7 +9,7 @@ import {ErrorContext, UserContext} from '../../Context';
 import { checkAuth } from '../../Api';
 
 const Error = ({ err }) => {
-  return <div className='error'>{err}</div>;
+  return <div className='error'>{String(err)}</div>;
 };
 
 const Chadlibs = () => {

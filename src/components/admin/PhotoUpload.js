@@ -20,7 +20,7 @@ const AdminPhotoUpload = ({ setErr }) => {
 	const [msg, setMsg] = React.useState('');
 
 	React.useEffect(() => {
-		if (!admin || loading ) {
+		if (!admin || loading) {
 			return;
 		}
 		setLoading(true);
@@ -51,7 +51,7 @@ const AdminPhotoUpload = ({ setErr }) => {
 			}
 		}
 		fetchPhotos();
-	}, [admin, page.index, page.tokens, setAdmin, setErr]);
+	}, [admin, page.index, page.tokens, setAdmin, setErr, loading]);
 	const handleNextPage = () => {
 		setPage((prev) => ({
 			...prev,
