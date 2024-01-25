@@ -5,8 +5,6 @@ env:
     REACT_APP_GOOGLE_API_KEY: "/chadedwards/google_api_key"
     REACT_APP_GOOGLE_SPREADSHEET_ID: "/chadedwards/google_spreadsheet_id"
     REACT_APP_GOOGLE_SHEET_ID: "/chadedwards/google_sheet_id"
-    REACT_APP_AWS_SECRET_ACCESS_KEY: "/chadedwards/aws_secret_access_key"
-    REACT_APP_AWS_ACCESS_KEY_ID: "/chadedwards/aws_access_key_id"
     REACT_APP_CHADLIBS_SPREADSHEET_ID: "/chadedwards/chadlibs_spreadsheet_id"
     REACT_APP_CHADLIBS_SHEET_ID: "/chadedwards/chadlibs_sheet_id"
     REACT_APP_GPT_KEY: "/chadedwards/gpt_key"
@@ -22,8 +20,6 @@ phases:
       - echo "REACT_APP_GOOGLE_API_KEY=$REACT_APP_GOOGLE_API_KEY" >> .env
       - echo "REACT_APP_GOOGLE_SPREADSHEET_ID=REACT_APP_GOOGLE_SPREADSHEET_ID" >> .env
       - echo "REACT_APP_GOOGLE_SHEET_ID=$REACT_APP_GOOGLE_SHEET_ID" >> .env
-      - echo "REACT_APP_AWS_SECRET_ACCESS_KEY=$REACT_APP_AWS_SECRET_ACCESS_KEY" >> .env
-      - echo "REACT_APP_AWS_ACCESS_KEY_ID=REACT_APP_AWS_ACCESS_KEY_ID" >> .env
       - echo "REACT_APP_CHADLIBS_SPREADSHEET_ID=REACT_APP_CHADLIBS_SPREADSHEET_ID" >> .env
       - echo "REACT_APP_CHADLIBS_SHEET_ID=REACT_APP_CHADLIBS_SHEET_ID" >> .env
       - echo "REACT_APP_GPT_KEY=REACT_APP_GPT_KEY" >> .env
