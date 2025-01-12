@@ -25,7 +25,7 @@ const Tour = ({ pastDates, upcomingDates, err }) => {
         dates = dates.sort((a, b) => {
             const aStart = a.start.dateTime ? Date.parse(a.start.dateTime) : Date.parse(a.start.date);
             const bStart = b.start.dateTime ? Date.parse(b.start.dateTime) : Date.parse(b.start.date);
-            return aStart > bStart ? 1 : -1;
+            return calendarType === 'past' ?  aStart > bStart ? -1 : 1 : aStart > bStart ? 1 : -1;
         });
         return <table className={'calendar'}>
             <thead>
