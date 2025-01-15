@@ -53,7 +53,7 @@ export const Router = ({ setErr }) => {
         <Route path='photos/upload' element={<AdminPhotoUpload setErr={setErr} />} />
         <Route path='photos' element={<AdminPhotos setErr={setErr} />} />
       </Route>
-      <Route path='/' element={<Home />} />
+      <Route path='/' element={<Home pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
     </Routes>
   );
 }
