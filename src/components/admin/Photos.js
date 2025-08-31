@@ -36,7 +36,7 @@ const AdminPhotos = ({ setErr }) => {
       }
     }
     fetchPhotos();
-   }, [admin]);
+   }, [admin, setErr]);
 
   const handleMetadata = ({ id, category, tags }) => {
     setMetadata((prev) => ({

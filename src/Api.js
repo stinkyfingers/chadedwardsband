@@ -112,23 +112,34 @@ export const checkAuth = async({ token }) => {
 
 export const chatGptCompletion = async({ messages }) => {
   const gptToken = process.env.REACT_APP_GPT_KEY;
-  const res = await fetch(`${chatGPT}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${gptToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: 'gpt-4o-mini',
-      messages: messages,
-      temperature: 0.7
-    })
-  });
-  const data = await res.json();
-  if (res.status !== 200) {
-    return { error: data.message };
+  try {
+    const res = await fetch(`${chatGPT}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${gptToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: messages,
+        temperature: 0.7
+      })
+    });
+    if (!res.ok) {
+      let errorData;
+      try {
+        errorData = await res.json();
+      } catch {
+        errorData = { message: res.statusText };
+      }
+      return { error: errorData.message || `HTTP ${res.status}` };
+    }
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("Fetch error:", err);
+    return { error: err.message || 'Unknown network error' };
   }
-  return data;
 };
 
 export const submitRequest = async({ request }) => {

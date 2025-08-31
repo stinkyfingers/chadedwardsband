@@ -51,7 +51,7 @@ const AdminPhotoUpload = ({ setErr }) => {
 			}
 		}
 		fetchPhotos();
-	}, [admin, page.index, page.tokens, setAdmin, setErr]);
+	}, [admin, page.index, page.tokens, setAdmin, setErr, loading]);
 	const handleNextPage = () => {
 		setPage((prev) => ({
 			...prev,
