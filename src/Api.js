@@ -4,7 +4,6 @@ const localEndpoint = "http://localhost:8087";
 const liveBadlibsEndpoint = "https://server.john-shenk.com/badlibs"; 
 const localBadlibsEndpoint = 'http://localhost:8088';
 // const localBadlibsEndpoint = "https://server.john-shenk.com/badlibs";
-const chatGPT = "https://api.openai.com/v1";
 
 const { NODE_ENV, REACT_APP_ENV } = process.env;
 const badLibsAPI = () => {
@@ -110,19 +109,16 @@ export const checkAuth = async({ token }) => {
   return data;
 };
 
-export const chatGptCompletion = async({ messages }) => {
-  const gptToken = process.env.REACT_APP_GPT_KEY;
+export const chatGptCompletion = async({ message }) => {
   try {
-    const res = await fetch(`${chatGPT}/chat/completions`, {
+    const res = await fetch(`${chadEdwardsAPI()}/chatgpt`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${gptToken}`,
         'Content-Type': 'application/json',
+        'Origin': 'https://www.chadedwardsband.com'
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages: messages,
-        temperature: 0.7
+        message: message,
       })
     });
     if (!res.ok) {
