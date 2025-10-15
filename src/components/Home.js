@@ -1,17 +1,17 @@
 import React from 'react';
 import { UpcomingDates } from './Tour';
 
-import img from '../images/band/IMG_0822.jpg';
+import img from '../images/band/100.jpg';
 
 import '../css/home.css';
 
 const Home = ({
-  pastDates,
   upcomingDates,
-  err
 }) => {
   return <div className='Home'>
-    <img className='bandImage' src={img} alt='Chad Edwards Band' />
+    <div className='imageContainer'>
+      <img className='bandImage' src={img} alt='Chad Edwards Band' />
+    </div>
     <UpcomingDates dates={upcomingDates} />
   </div>
 };

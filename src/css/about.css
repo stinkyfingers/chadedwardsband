@@ -6,11 +6,6 @@
     width: 30%;
     margin: auto;
 }
-
-.bandImage {
-    max-width: 100%;
-}
-
 @media only screen and (max-width: 600px) {
     .fb {
         max-width: 20%;
