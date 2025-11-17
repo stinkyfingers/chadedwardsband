@@ -1,7 +1,7 @@
 import React from 'react';
 import HamburgerMenu from 'react-hamburger-menu';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../images/CELogoTrim.jpg';
+import logo from '../images/CELogoBlack.png';
 
 import '../css/header.css';
 
