@@ -111,7 +111,7 @@ export const checkAuth = async({ token }) => {
 
 export const chatGptCompletion = async({ message }) => {
   try {
-    const res = await fetch(`${chadEdwardsAPI()}/chatgpt`, {
+    const res = await fetch(`${chadEdwardsAPI()}/gemini`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
