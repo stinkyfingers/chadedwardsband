@@ -1,12 +1,17 @@
 .Header {
     margin: 0;
     z-index: 100;
+    color: var(--main);
+    background-color: var(--text);
 }
 
 .logo {
     font-family: 'Monoton';
     padding: 0;
     margin: 0;
+}
+.logoImg {
+    height: 6em;
 }
 
 .selected {

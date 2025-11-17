@@ -1,6 +1,7 @@
 import React from 'react';
 import HamburgerMenu from 'react-hamburger-menu';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../images/CELogoTrim.jpg';
 
 import '../css/header.css';
 
@@ -24,7 +25,7 @@ const Header = ({ err }) => {
   
   return (
     <div className="Header">
-      <h1 className='logo'>Chad Edwards Band</h1>
+      <img className='logoImg' src={logo} alt='Chad Edwards Band' />
       <nav className='listNav'>
         { links() }
       </nav>
