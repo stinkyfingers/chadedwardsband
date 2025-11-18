@@ -30,7 +30,7 @@ const Header = ({ err }) => {
         { links() }
       </nav>
       <nav className='burgerNav'>
-        <HamburgerMenu isOpen={burgerOpen} menuClicked={() => setBurgerOpen(current => !current)} />
+        <HamburgerMenu isOpen={burgerOpen} menuClicked={() => setBurgerOpen(current => !current)} color="#eee" />
         { burgerOpen && <div className='burgerNavLinks'>
           { links() }
           </div> }
