@@ -6,6 +6,7 @@ import Header from './components/Header';
 import About from './components/About';
 import Tour from './components/Tour';
 import Photos from './components/Photos';
+import FanPhotos from './components/FanPhotos';
 import Video from './components/Video';
 import SongList from './components/SongList';
 import Requests from './components/Requests';
@@ -43,6 +44,7 @@ export const Router = ({ setErr }) => {
       <Route path='/about' element={<About />} />
       <Route path='/tour' element={<Tour pastDates={pastDates} upcomingDates={upcomingDates} err={calendarErr} />} />
       <Route path='/photos' element={<Photos setErr={ setErr } />} />
+      <Route path='/fanphotos' element={<FanPhotos setErr={ setErr } />} />
       <Route path='/video' element={<Video />} />
       <Route path='/songs' element={<SongList songlist={songlist} err={songErr} dates={[...pastDates, ...upcomingDates]} calendarErr={calendarErr}  />} />
       <Route path='/requests' element={<Requests />} />
@@ -72,7 +74,7 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <div className='sticky'>
-            <Header err={err} />
+            <Header err={err} setErr={setErr} />
           </div>
           <div />
           <div className='body'>

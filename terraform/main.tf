@@ -131,3 +131,57 @@ resource "aws_route53_record" "www_record" {
     evaluate_target_health = false
   }
 }
+
+# Public S3 bucket for images
+resource "aws_s3_bucket" "image_bucket" {
+  bucket = var.image_bucket_name
+}
+
+resource "aws_s3_bucket_ownership_controls" "image_bucket_ownership" {
+  bucket = aws_s3_bucket.image_bucket.id
+
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+resource "aws_s3_bucket_acl" "image_bucket_acl" {
+  bucket = aws_s3_bucket.image_bucket.id
+  acl    = "public-read"
+  
+  depends_on = [
+    aws_s3_bucket_ownership_controls.image_bucket_ownership,
+    aws_s3_bucket_public_access_block.image_bucket_pab
+  ]
+}
+
+resource "aws_s3_bucket_public_access_block" "image_bucket_pab" {
+  bucket = aws_s3_bucket.image_bucket.id
+  
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+resource "aws_s3_bucket_policy" "image_bucket_policy" {
+  bucket = aws_s3_bucket.image_bucket.id
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": [
+        "arn:aws:s3:::${var.image_bucket_name}/*"
+      ]
+    }
+  ]
+}
+EOF
+
+  depends_on = [aws_s3_bucket_public_access_block.image_bucket_pab]
+}

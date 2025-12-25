@@ -27,3 +27,8 @@ variable "certificate_arn" {
   type = string 
   default = "arn:aws:acm:us-east-1:671958020402:certificate/d3d8cc33-8a32-49c4-8e5b-d35e1754d9bd"
 }
+
+variable "image_bucket_name" {
+  type = string
+  default = "chadedwardspublicimages"
+}
