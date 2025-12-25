@@ -276,6 +276,24 @@ export const listPhotos = async(jwt) => {
   return data;
 }
 
+export const listPublicPhotos = async(jwt) => {
+  const url = `${chadEdwardsAPI()}/photos/public/list`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Authorization': jwt,
+      'Content-Type': 'application/json',
+      'Origin': 'https://www.chadedwardsband.com'
+    },
+  });
+  const data = await res.json();
+  if (res.status !== 200) {
+    return { error: data.error };
+  }
+  return data;
+}
+
+
 export const updateMetadata = async(jwt, metadata) => {
   const url = `${chadEdwardsAPI()}/photos/update`;
   const res = await fetch(url, {

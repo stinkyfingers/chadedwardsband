@@ -1,0 +1,9 @@
+.publicPhotosPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.publicPhoto {
+  width: 50vw;
+  padding: 1em 0;
+}
