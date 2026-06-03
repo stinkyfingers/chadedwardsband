@@ -2,7 +2,14 @@
     margin: 0;
     z-index: 100;
     color: var(--main);
-    background-color: var(--text);
+    /* background-color: var(--logo-background); */
+    background-image: linear-gradient(
+        to right, 
+        var(--logo-background-fade) 0%, 
+        var(--logo-background) 10%, 
+        var(--logo-background) 90%, 
+        var(--logo-background-fade) 100%
+  );
 }
 
 .logo {

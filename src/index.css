@@ -18,6 +18,8 @@ body {
   --green: #0f0;
   --secondary-font: 'Dosis';
   --primary-font: 'PT Sans Narrow';
+  --logo-background: #03101E;
+  --logo-background-fade: #314666;
   
   background-color: var(--main);
   color: var(--text);

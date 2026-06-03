@@ -1,7 +1,7 @@
 import React from 'react';
 import fullBandStagePlot from '../images/CE_StagePlot_FullBand.jpg';
 import '../css/tech.css';
-import logo from '../images/CELogoBlack.png';
+import logo from '../images/logo.png';
 
 const Tech = () => {
   const handleOpen = (url) => {
