@@ -2,10 +2,12 @@ import React from 'react';
 
 import '../css/about.css';
 import fb from '../images/fb_logo.png'
+import ig from '../images/Instagram_icon.png'
 
 const About = () => {
   return <div className={"About"}>
-    <a href={'https://www.facebook.com/ChadEdwardslive'} target='_'><img className='fb' src={fb} alt='Chad Edwards Band' /></a>
+    <a href={'https://www.facebook.com/ChadEdwardslive'} target='_'><img className='fb' src={fb} alt='Chad Edwards Band Facebook' /></a>
+    <a href={'https://www.instagram.com/chadedwardsband/'} target='_'><img className='fb' src={ig} alt='Chad Edwards Band Instagram' /></a>
     <div className={'summary'}>
       <section class="band-bios">
         <header>
