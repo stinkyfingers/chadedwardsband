@@ -6,6 +6,9 @@
     width: 30%;
     margin: auto;
 }
+.band-member, .band-legacy {
+    text-align: left;
+}
 @media only screen and (max-width: 600px) {
     .fb {
         max-width: 20%;
