@@ -8,15 +8,30 @@
 table.calendar {
     margin: auto;
     border-collapse: collapse;
+    width: 100%;
+    max-width: 60em;
 }
 
 td,th {
     padding: 1em;
 }
 
+table.calendar th {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: .85em;
+    border-bottom: 2px solid var(--gold);
+}
+
+table.calendar td {
+    border-bottom: 1px solid var(--divider);
+    color: var(--parchment);
+}
 
 .eventRow:hover {
-    background-color: var(--grey);
+    background-color: var(--night-elevated);
 }
 
 .oblique {
@@ -29,6 +44,48 @@ td,th {
 
 .hidden {
     display: none;
+}
+
+.Tour {
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 1em 0 3em;
+}
+
+.Tour .error {
+    color: #ff8080;
+    background-color: rgba(138, 42, 42, .25);
+    padding: .4em .8em;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+h3.upcomingDates, h3.pastDates {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    letter-spacing: .03em;
+    text-align: center;
+}
+
+.mapButton {
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: .5em 1.4em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.mapButton:hover {
+    background-color: var(--gold);
+    color: var(--night);
 }
 
 @media only screen and (max-width: 600px) {

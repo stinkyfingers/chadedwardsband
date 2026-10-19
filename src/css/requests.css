@@ -1,12 +1,35 @@
 .requests {
     margin: auto;
     display: inline-block;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 1.5em 2em 3em;
 }
+
 .requestTable {
     width: 100%;
+    max-width: 70em;
+    margin: auto;
     table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.requestTable th {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: .85em;
+    border-bottom: 2px solid var(--gold);
+    padding: .6em;
 }
 
 .requestData {
     max-width: 20%;
+    border-bottom: 1px solid var(--divider);
+    padding: .6em;
+    word-wrap: break-word;
 }

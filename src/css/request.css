@@ -1,17 +1,93 @@
-.label {
+.request {
+    padding-top: 1em;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 1.5em 1em 3em;
+}
+
+.request .error {
+    color: #ff8080;
+    background-color: rgba(138, 42, 42, .25);
+    padding: .4em .8em;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.request h2 {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    text-align: center;
+}
+
+.request .label {
     padding-right: 1em;
     width: 10em;
     display: inline-block;
+    color: var(--parchment-dim);
 }
-.request {
-    padding-top: 1em;
-}
-.directions {
+
+.request .directions {
     padding: 1em;
+    max-width: 40em;
+    margin: auto;
+    color: var(--parchment-dim);
 }
-.pastRequests:hover {
+
+.request .controls {
+    max-width: 40em;
+    margin: auto;
+    text-align: center;
+}
+
+.request input {
+    background-color: var(--night-elevated);
+    border: 1px solid var(--divider);
+    color: var(--parchment);
+    padding: .5em;
+    border-radius: 2px;
+    width: 60%;
+}
+
+.request button {
+    font-family: var(--secondary-font);
+    font-weight: 600;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: .5em 1.4em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+    margin: .5em 0;
+}
+
+.request button:hover:not(:disabled) {
+    background-color: var(--gold);
+    color: var(--night);
+}
+
+.request button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.request .status {
+    color: var(--gold);
+}
+
+.request .pastRequests {
+    padding: 1em;
+    text-align: center;
+}
+
+.request .pastRequests:hover {
     opacity: .5;
 }
-.pastRequests {
-    padding: 1em;
+
+.request .pastRequests a {
+    color: var(--gold);
 }

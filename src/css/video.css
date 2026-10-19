@@ -1,8 +1,26 @@
-ul.video-list {
-    list-style-type: none; 
-    padding: 0;
-    margin: 0;
+.video {
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 1.5em 1em 3em;
 }
+
+ul.video-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 60em;
+}
+
+.video h5 {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
 video.video-player {
     width: 100%;
+    border: 1px solid var(--divider);
 }

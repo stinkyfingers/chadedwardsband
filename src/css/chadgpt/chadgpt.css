@@ -2,24 +2,55 @@
     display: flex;
     flex-direction: column;
     margin: auto;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 1.5em 1em 3em;
 }
 .directions, .loading {
     margin: auto;
 }
 .loading {
-    color: var(--blue);
+    color: var(--gold);
 }
 .directions {
     max-width: 45em;
     font-style: oblique;
     padding: 1em 0;
+    color: var(--parchment-dim);
 }
 .prompt {
     margin: auto;
     max-width: 25em;
+    width: 100%;
+    background-color: var(--night-elevated);
+    border: 1px solid var(--divider);
+    color: var(--parchment);
+    border-radius: 2px;
+    padding: .6em;
+    font-family: var(--secondary-font);
+    box-sizing: border-box;
 }
 .submit {
     margin: auto;
+    margin-top: 1em;
+    font-family: var(--secondary-font);
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    border-radius: 2px;
+    padding: .5em 1.4em;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+}
+.submit:hover:not(:disabled) {
+    background-color: var(--gold);
+    color: var(--night);
+}
+.submit:disabled {
+    opacity: .4;
+    cursor: not-allowed;
 }
 .response {
     max-width: 75em;

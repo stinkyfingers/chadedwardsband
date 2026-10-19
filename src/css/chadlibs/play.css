@@ -1,3 +1,9 @@
+.Play {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 1.5em 1em 3em;
+}
+
 div.text {
     font-size: 1.4em;
 }
@@ -5,8 +11,19 @@ div.title {
     color: var(--dark-grey);
 }
 
+.Play div.title {
+    color: var(--gold);
+    font-family: var(--heading-font);
+    font-size: 1.6em;
+    text-align: center;
+}
+
 label.term {
     color: var(--dark-grey);
+}
+
+.Play label.term {
+    color: var(--parchment-dim);
 }
 
 button.reset {
@@ -15,6 +32,22 @@ button.reset {
 
 button.submit {
     color: var(--white);
+}
+
+.Play button {
+    font-family: var(--secondary-font);
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    border-radius: 2px;
+    padding: .5em 1.2em;
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.Play button:hover {
+    background-color: var(--gold);
+    color: var(--night);
 }
 
 div.actions {
@@ -27,6 +60,19 @@ div.actions {
 input.chadified {
     background-color: var(--light-grey);
     color: var(--grey);
+}
+
+.Play input.chadified {
+    background-color: var(--night-elevated);
+    color: var(--parchment-dim);
+}
+
+.Play input[type='text']:not(.chadified) {
+    background-color: var(--night-elevated);
+    border: 1px solid var(--divider);
+    color: var(--parchment);
+    border-radius: 2px;
+    padding: .4em;
 }
 
 div.complete {

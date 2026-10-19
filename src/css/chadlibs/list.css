@@ -1,7 +1,9 @@
 div.List {
     margin: auto;
     display: inline-block;
-    max-width: 100%
+    max-width: 100%;
+    padding: 1.5em 0 3em;
+    box-sizing: border-box;
 }
 
 table.libs {
@@ -11,14 +13,25 @@ table.libs {
     max-width: -moz-fit-content;
     /* white-space: nowrap; */
     margin: auto;
+    border-collapse: collapse;
 }
 
 table.libs>thead>tr>th {
-    background-color: var(--light-grey);
+    background-color: var(--night-elevated);
+    color: var(--gold);
+    font-family: var(--heading-font);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    padding: .6em;
+}
+
+table.libs>tbody>tr>td {
+    padding: .6em;
+    border-bottom: 1px solid var(--divider);
 }
 
 table.libs>tbody>tr:hover {
-    background-color: var(--light-grey);
+    background-color: var(--night-elevated);
 }
 
 td.user,td.created {
@@ -26,7 +39,12 @@ td.user,td.created {
 }
 
 button.play {
-    color: var(--white);
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    padding: .3em .8em;
+    cursor: pointer;
 }
 
 button.play:hover {
@@ -34,15 +52,24 @@ button.play:hover {
 }
 
 button.edit {
-    color: var(--red);
+    color: var(--ember);
+    background: transparent;
+    border: 1px solid var(--ember);
+    border-radius: 2px;
+    padding: .3em .8em;
+    cursor: pointer;
 }
 
 div.status {
-    color: var(--white);
-    background-color: var(--green);
+    color: var(--parchment);
+    background-color: var(--night-elevated);
+    padding: .4em .8em;
+    display: inline-block;
+    border-radius: 2px;
 }
 
 div.instructions {
     width: 80%;
     margin: auto;
+    color: var(--parchment-dim);
 }
