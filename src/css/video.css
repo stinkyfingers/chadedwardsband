@@ -13,6 +13,10 @@ ul.video-list {
     max-width: 60em;
 }
 
+ul.video-list > li {
+    margin-bottom: 2.5em;
+}
+
 .video h5 {
     font-family: var(--heading-font);
     color: var(--gold);
@@ -20,7 +24,12 @@ ul.video-list {
     letter-spacing: .04em;
 }
 
-video.video-player {
+.video-player {
     width: 100%;
     border: 1px solid var(--divider);
+}
+
+iframe.video-player {
+    aspect-ratio: 16 / 9;
+    height: auto;
 }

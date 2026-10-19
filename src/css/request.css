@@ -1,6 +1,5 @@
 .request {
     padding-top: 1em;
-    min-height: 100vh;
     box-sizing: border-box;
     background-color: var(--night);
     color: var(--parchment);
