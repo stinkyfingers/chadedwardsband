@@ -1,3 +1,25 @@
+.Tech {
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 1.5em 1em 3em;
+    text-align: center;
+}
+
+.Tech h6 {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 1.1em;
+}
+
+.stagePlotImage {
+    max-width: 100%;
+    border: 1px solid var(--divider);
+}
+
 img.stagePlotImage:hover {
     cursor:pointer;
     opacity: .6;

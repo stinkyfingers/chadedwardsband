@@ -1,14 +1,15 @@
 .Header {
     margin: 0;
     z-index: 100;
-    color: var(--main);
+    color: var(--parchment);
+    padding: .5em 0;
     /* background-color: var(--logo-background); */
     background-image: linear-gradient(
-        to right, 
-        var(--logo-background-fade) 0%, 
-        var(--logo-background) 10%, 
-        var(--logo-background) 90%, 
-        var(--logo-background-fade) 100%
+        to right,
+        var(--night-elevated) 0%,
+        var(--night) 10%,
+        var(--night) 90%,
+        var(--night-elevated) 100%
   );
 }
 
@@ -23,18 +24,26 @@
 
 .selected {
     text-decoration: underline!important;
-    text-decoration-color: var(--highlight)!important;
-} 
+    text-decoration-color: var(--gold)!important;
+}
 
 .listNav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .04em;
+    font-size: .9em;
 }
 
 .burgerNavLinks > a {
     display: block;
     font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    padding: .3em 0;
 }
 
 .burgerNav > div {
@@ -44,6 +53,11 @@
 .link {
     text-decoration: none;
     list-style-type: none;
+    transition: color .15s ease;
+}
+
+.link:hover {
+    color: var(--gold);
 }
 
 a {
@@ -53,6 +67,14 @@ a {
 
 a:hover {
     cursor: pointer;
+}
+
+.Header .error {
+    color: #ff8080;
+    background-color: rgba(138, 42, 42, .25);
+    padding: .4em .8em;
+    border-radius: 2px;
+    display: inline-block;
 }
 
 @media (max-width: 600px) {

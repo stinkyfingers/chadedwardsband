@@ -2,8 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: var(--night);
+  color: var(--parchment);
+  padding-top: 1.5em;
+  padding-bottom: 2em;
 }
 .publicPhoto {
   width: 50vw;
   padding: 1em 0;
+  border: 1px solid var(--divider);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .4);
 }

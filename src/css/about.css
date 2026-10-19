@@ -1,14 +1,68 @@
+.About {
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 2em 0 4em;
+}
+
+.About a:hover {
+    opacity: .7;
+}
+
 .fb {
     max-width: 8%;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, .4));
 }
 
 .summary {
     width: 30%;
     margin: auto;
 }
+
+.summary h1 {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    font-size: 2.4em;
+    letter-spacing: .02em;
+}
+
+.summary h2 {
+    font-family: var(--heading-font);
+    color: var(--gold);
+}
+
+.summary h3 {
+    color: var(--parchment-dim);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 1em;
+}
+
+.summary p {
+    line-height: 1.6;
+    color: var(--parchment-dim);
+}
+
+.summary blockquote {
+    border-left: 3px solid var(--gold);
+    margin: 1.2em 0;
+    padding-left: 1em;
+    font-style: italic;
+    color: var(--parchment);
+}
+
 .band-member, .band-legacy {
     text-align: left;
 }
+
+.band-member + .band-member,
+.band-legacy {
+    border-top: 1px solid var(--divider);
+    margin-top: 2em;
+    padding-top: 2em;
+}
+
 @media only screen and (max-width: 600px) {
     .fb {
         max-width: 20%;

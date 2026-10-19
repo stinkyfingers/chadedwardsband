@@ -1,22 +1,52 @@
+/* Chadlibs.js reuses the "App" class name for its own root wrapper, nested
+   inside the site-wide .App — this selector targets only that nested instance. */
+.App .App {
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+}
+
+.content {
+    padding: 0 1em 3em;
+    box-sizing: border-box;
+}
+
+.App .App .error {
+    color: #ff8080;
+    background-color: rgba(138, 42, 42, .25);
+    padding: .4em .8em;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 1em;
+}
+
 div.chadLibsHeader {
     padding: 1em 0;
+    background-color: var(--night);
 }
 
 div.menu {
-    background-color: var(--light-grey);
+    background-color: var(--night-elevated);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
 button.menu {
-    color: var(--white);
+    color: var(--parchment);
     height: 2em;
+    background: transparent;
+    border: none;
+    font-family: var(--secondary-font);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    font-weight: 600;
 }
 
 button.menu a {
     text-decoration: none;
-    color: var(--white)
+    color: var(--parchment);
 }
 
 button.menu:hover {

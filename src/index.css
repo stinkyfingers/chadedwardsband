@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Dosis:wght@400;500;600;700&display=swap');
+
 body {
   margin: 0;
-  font-family: var(--primary-font), var(--secondary-font), 'Helvetica';
+  font-family: var(--secondary-font), var(--primary-font), 'Helvetica', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -20,7 +22,17 @@ body {
   --primary-font: 'PT Sans Narrow';
   --logo-background: #03101E;
   --logo-background-fade: #314666;
-  
+
+  /* Western/country-noir theme tokens, used by the public-facing pages only */
+  --night: #03101e;
+  --night-elevated: #314666;
+  --parchment: #f1e8d4;
+  --parchment-dim: #cbbfa0;
+  --gold: #d2a441;
+  --ember: #8a2a2a;
+  --divider: rgba(241, 232, 212, 0.18);
+  --heading-font: 'Rye', 'Copperplate', serif;
+
   background-color: var(--main);
   color: var(--text);
 }

@@ -6,7 +6,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: var(--main);
+  background-color: var(--night);
   z-index: 10;
 }
 

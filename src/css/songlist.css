@@ -1,8 +1,49 @@
 .songlist {
     display: inline-block;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding: 1.5em 0 3em;
+}
+
+.songlist .error {
+    color: #ff8080;
+    background-color: rgba(138, 42, 42, .25);
+    padding: .4em .8em;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.songlist table {
+    margin: auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 60em;
+}
+
+.songlist th {
+    font-family: var(--heading-font);
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: .85em;
+    border-bottom: 2px solid var(--gold);
+    padding: .8em .6em;
+    cursor: pointer;
+}
+
+.songlist th svg {
+    margin-left: .4em;
+}
+
+.songlist td {
+    border-bottom: 1px solid var(--divider);
+    padding: .6em;
 }
 
 .selectable:hover {
-    background-color: #f5f5f5;
+    background-color: var(--night-elevated);
     cursor: pointer;
 }

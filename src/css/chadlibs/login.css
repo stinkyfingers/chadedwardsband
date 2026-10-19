@@ -2,11 +2,23 @@ div.Login, div.Logout {
     display: inline;
 }
 
+button.login {
+    font-family: var(--secondary-font);
+    background-color: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    border-radius: 2px;
+    padding: .4em 1em;
+}
+
 button.login:hover {
     cursor: pointer;
+    background-color: var(--gold);
+    color: var(--night);
 }
 
 small.username {
     font-size: .5em;
     display: block;
+    color: var(--parchment-dim);
 }

@@ -1,3 +1,25 @@
+.Home {
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--night);
+    color: var(--parchment);
+    padding-bottom: 2em;
+}
+
+.Home .error {
+    color: #ff8080;
+    background-color: rgba(138, 42, 42, .25);
+    padding: .4em .8em;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.imageContainer {
+    line-height: 0;
+}
+
 .bandImage {
     width: 100%;
+    display: block;
+    border-bottom: 3px solid var(--gold);
 }
